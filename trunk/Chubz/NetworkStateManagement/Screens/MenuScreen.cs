@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 #endregion
 
-namespace NetworkStateManagement
+namespace Chubz
 {
     /// <summary>
     /// Base class for screens that contain a menu of options. The user can

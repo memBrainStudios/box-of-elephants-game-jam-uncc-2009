@@ -11,7 +11,7 @@
 using System;
 #endregion
 
-namespace NetworkStateManagement
+namespace Chubz
 {
     /// <summary>
     /// Custom EventArgs class used by the NetworkBusyScreen.OperationCompleted event.

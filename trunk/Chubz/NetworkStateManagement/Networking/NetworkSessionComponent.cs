@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
-namespace NetworkStateManagement
+namespace Chubz
 {
     /// <summary>
     /// Component in charge of owning and updating the current NetworkSession object.

@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Net;
 #endregion
 
-namespace NetworkStateManagement
+namespace Chubz
 {
     /// <summary>
     /// Specialized message box subclass, used to display network error messages.

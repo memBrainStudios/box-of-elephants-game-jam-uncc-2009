@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.GamerServices;
 #endregion
 
-namespace NetworkStateManagement
+namespace Chubz
 {
     /// <summary>
     /// This menu screen lets the user choose whether to create a new

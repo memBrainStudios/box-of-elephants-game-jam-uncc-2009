@@ -7,7 +7,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\gamefont.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gamefont.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\menufont.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\menufont.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\background.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\background.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\blank.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\blank.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -43,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\gradient.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gradient.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -52,7 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\cat.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\cat.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -61,7 +61,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\chat_able.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_able.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -70,7 +70,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\chat_mute.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_mute.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -79,7 +79,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\chat_ready.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_ready.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <Item>
@@ -88,7 +88,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\chat_talking.xnb</Output>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_talking.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -96,10 +96,10 @@
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\</RootDirectory>
+      <LoggerRootDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

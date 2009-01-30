@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Net;
 #endregion
 
-namespace NetworkStateManagement
+namespace Chubz
 {
     /// <summary>
     /// Sample showing how to manage the different game states involved in
@@ -44,7 +44,7 @@ namespace NetworkStateManagement
 
             graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreferredBackBufferWidth = 1067;
+            graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 600;
 
             // Create components.
