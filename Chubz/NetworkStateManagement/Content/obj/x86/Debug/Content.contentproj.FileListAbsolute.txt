@@ -1,1 +1,2 @@
 C:\Documents and Settings\me\Desktop\NetworkStateManagementSample\NetworkStateManagement\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\obj\x86\Debug\ResolveAssemblyReference.cache
