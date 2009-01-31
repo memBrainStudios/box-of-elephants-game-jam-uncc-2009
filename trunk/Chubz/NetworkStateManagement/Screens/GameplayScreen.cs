@@ -16,7 +16,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Net;
-using Microsoft.Xna.Framework.Audio;
 #endregion
 
 namespace Chubz
@@ -49,11 +48,6 @@ namespace Chubz
         Texture2D BadEnemyTextureA;
         Texture2D BadEnemyTextureB;
         Texture2D temp;
-
-        private AudioEngine audioEngine;
-        private WaveBank waveBank;
-        private SoundBank soundBank;
-        public Cue sound1 = null;
 
         
 
@@ -104,19 +98,6 @@ namespace Chubz
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
             player = new Player(new Vector2(Levels.TileSize, 18*Levels.TileSize - 128));
             Levels.Initialize();
-
-            audioEngine = new AudioEngine("test.xgs");
-
-
-            waveBank = new WaveBank(audioEngine, "Wave Bank.xwb");
-
-            soundBank = new SoundBank(audioEngine, "Sound Bank.xsb");
-
-
-
-            sound1 = soundBank.GetCue("BackMusic_vol1_(Ant_Marc_Dave_Gir_7520_hifi)");
-            sound1.Play();
-
             initilizeEnemies();
 
         }
@@ -175,11 +156,21 @@ namespace Chubz
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             player.Update(gameTime);
+                for (int i = 0; i < Levels.level_1.GetLength(0); i++)
+                {
+                    for (int j = 0; j < Levels.level_1.GetLength(1); j++)
+                    {
+                        if ((Levels.level_1[i, j] == 4))//detecting GoodEnemies
+                        {
+                            UpdateEnemy(new Vector2(i, j), true);
+                        }
+                        if ((Levels.level_1[i, j] == 5))//detecting BadEnemies
+                        {
+                            UpdateEnemy(new Vector2(i, j), false);
+                        }
 
-            if (IsActive)
-            {
-
-            }
+                    }
+                }
             // If we are in a network game, check if we should return to the lobby.
             if ((networkSession != null) && !IsExiting)
             {
@@ -268,7 +259,7 @@ namespace Chubz
         {
             for (int i = 0; i < enemiesBad.Length; i++)//check all enemies
             {
-                if ((enemiesBad[i].OriginalVector == TestVector) && (enemiesBad[i].alive) ) //has same origin and is alive
+                if ((enemiesBad[i]!= null)&& ((enemiesBad[i].OriginalVector == TestVector) && (enemiesBad[i].alive))) //has same origin and is alive
                 {
                     return true;
                 }
@@ -276,7 +267,7 @@ namespace Chubz
             }
             for (int i = 0; i < enemiesGood.Length; i++)//check all enemies
             {
-                if ((enemiesGood[i].OriginalVector == TestVector) && (enemiesBad[i].alive)) //has same origin and is alive
+                if ((enemiesGood[i]!= null)&& ((enemiesGood[i].OriginalVector == TestVector) && (enemiesGood[i].alive))) //has same origin and is alive
                 {
                     return true;
                 }
@@ -368,7 +359,6 @@ namespace Chubz
 
                     tilePos += playerPos;
 
-
                     if ((Levels.level_1[i, j] == 1))//detecting walls
                     {
                         spriteBatch.Draw(grndTexture, tilePos, Color.White); 
@@ -381,17 +371,11 @@ namespace Chubz
                     {
                         spriteBatch.Draw(NormalPlatformB, tilePos, Color.White); 
                     }
-                    if ((Levels.level_1[i, j] == 4))//detecting GoodEnemies
-                    {
-                        UpdateEnemy(new Vector2(i,j), true);
-                    }
-                    if ((Levels.level_1[i, j] == 5))//detecting BadEnemies
-                    {
-                        UpdateEnemy(new Vector2(i, j), false);
-                    }
+
                 }
             }
-            player.Draw(spriteBatch);      
+            player.Draw(spriteBatch);
+
             if (networkSession != null)
             {
                 string message = "Players: " + networkSession.AllGamers.Count;
