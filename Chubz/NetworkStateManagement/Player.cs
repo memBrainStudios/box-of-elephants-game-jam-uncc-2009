@@ -88,7 +88,7 @@ namespace Chubz
             sprite.StopAnimation();
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Platforms[] platforms)
         {
             sprite.Update(gameTime);
             gameAudio.UpdateAudio();
@@ -108,7 +108,7 @@ namespace Chubz
                 return;
             }
 
-            CollisionDetection();
+            CollisionDetection(platforms);
 
             //change size
             if (Size != 1 && Weight < 250f)
@@ -248,7 +248,7 @@ namespace Chubz
             sprite.Draw(spriteBatch);
         }
 
-        public void CollisionDetection()
+        public void CollisionDetection(Platforms[] platforms)
         {
             Rectangle boundingBox, tileBoundingBox;
 
@@ -270,22 +270,44 @@ namespace Chubz
                             Win = true;
                             return;
                         }
-                        if (y >= Levels.Height || x >= Levels.Width ||
-                            (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 4))
+                        if (y >= Levels.Height || x >= Levels.Width)
                         {
-                            tileBoundingBox = new Rectangle(
-                                Levels.TileSize * x, Levels.TileSize * y,
-                                Levels.TileSize, Levels.TileSize
-                                );
-
-                            if (boundingBox.Intersects(tileBoundingBox))
+                            if (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 3)
                             {
-                                if (Velocity.X < 0)
-                                    MapPosition.X = (x + 1) * Levels.TileSize;
-                                else
-                                    MapPosition.X = x * Levels.TileSize - 128;
-                                Velocity.X = 0f;
+                                tileBoundingBox = new Rectangle(
+                                    Levels.TileSize * x, Levels.TileSize * y,
+                                    Levels.TileSize, Levels.TileSize
+                                    );
+
+                                if (boundingBox.Intersects(tileBoundingBox))
+                                {
+                                    if (Velocity.X < 0)
+                                        MapPosition.X = (x + 1) * Levels.TileSize;
+                                    else
+                                        MapPosition.X = x * Levels.TileSize - 128;
+                                    Velocity.X = 0f;
+                                }
                             }
+                        }
+                    }
+                }
+
+                for (int i = 0; i < platforms.Length; i++)
+                {
+                    if (platforms[i] != null && platforms[i].Active)
+                    {
+                        tileBoundingBox = new Rectangle(
+                            (int)platforms[i].MapPosition.X, (int)platforms[i].MapPosition.Y,
+                            32, 32
+                            );
+
+                        if (boundingBox.Intersects(tileBoundingBox))
+                        {
+                            if (Velocity.X < 0)
+                                MapPosition.X = platforms[i].MapPosition.X + 32;
+                            else
+                                MapPosition.X = platforms[i].MapPosition.X - 128;
+                            Velocity.X = 0f;
                         }
                     }
                 }
@@ -316,7 +338,7 @@ namespace Chubz
                 for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
                 {
                     if (y >= Levels.Height || x >= Levels.Width ||
-                            (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 4))
+                            (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 3))
                     {
                         tileBoundingBox = new Rectangle(
                             Levels.TileSize * x, Levels.TileSize * y,
@@ -333,6 +355,28 @@ namespace Chubz
                             else if (Velocity.Y > 0f)
                                 MapPosition.Y = y * Levels.TileSize - 128;
                         }
+                    }
+                }
+            }
+
+            for (int i = 0; i < platforms.Length; i++)
+            {
+                if (platforms[i] != null && platforms[i].Active)
+                {
+                    tileBoundingBox = new Rectangle(
+                        (int)platforms[i].MapPosition.X, (int)platforms[i].MapPosition.Y,
+                        32, 32
+                        );
+
+                    if (boundingBox.Intersects(tileBoundingBox))
+                    {
+                        if (Velocity.Y < 0f)
+                        {
+                            MapPosition.Y = platforms[i].MapPosition.Y + 32;
+                            Velocity.Y = 0f;
+                        }
+                        else if (Velocity.Y > 0f)
+                            MapPosition.Y = platforms[i].MapPosition.Y - 128;
                     }
                 }
             }

@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gamefont.xnb</Output>
-      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gamefont.xnb</Output>
+      <Time>2009-01-30T16:42:25.3968-05:00</Time>
     </Item>
     <Item>
       <Source>menufont.spritefont</Source>
@@ -16,8 +16,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\menufont.xnb</Output>
-      <Time>2009-01-31T03:25:26.78125-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\menufont.xnb</Output>
+      <Time>2009-01-30T16:42:25.3878-05:00</Time>
     </Item>
     <Item>
       <Source>background.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\background.xnb</Output>
+      <Time>2009-01-30T16:42:25.3668-05:00</Time>
     </Item>
     <Item>
       <Source>blank.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\blank.xnb</Output>
-      <Time>2009-01-31T03:25:26.828125-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\blank.xnb</Output>
+      <Time>2009-01-30T16:42:25.3928-05:00</Time>
     </Item>
     <Item>
       <Source>gradient.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gradient.xnb</Output>
-      <Time>2009-01-31T03:25:26.765625-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gradient.xnb</Output>
+      <Time>2009-01-30T16:42:25.3238-05:00</Time>
     </Item>
     <Item>
       <Source>cat.tga</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\cat.xnb</Output>
-      <Time>2009-01-31T03:25:26.765625-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\cat.xnb</Output>
+      <Time>2009-01-30T16:42:25.3618-05:00</Time>
     </Item>
     <Item>
       <Source>chat_able.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_able.xnb</Output>
-      <Time>2009-01-31T03:25:26.765625-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_able.xnb</Output>
+      <Time>2009-01-30T16:42:25.3828-05:00</Time>
     </Item>
     <Item>
       <Source>chat_mute.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_mute.xnb</Output>
-      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_mute.xnb</Output>
+      <Time>2009-01-30T16:42:25.3998-05:00</Time>
     </Item>
     <Item>
       <Source>chat_ready.png</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_ready.xnb</Output>
-      <Time>2009-01-31T03:25:26.78125-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_ready.xnb</Output>
+      <Time>2009-01-30T16:42:25.3858-05:00</Time>
     </Item>
     <Item>
       <Source>chat_talking.png</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_talking.xnb</Output>
-      <Time>2009-01-31T03:25:26.828125-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_talking.xnb</Output>
+      <Time>2009-01-30T16:42:25.3948-05:00</Time>
     </Item>
     <Item>
       <Source>chubs spritesheet.png</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chubs spritesheet.xnb</Output>
-      <Time>2009-01-31T03:25:26.8125-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chubs spritesheet.xnb</Output>
+      <Time>2009-01-30T21:22:41.2022-05:00</Time>
     </Item>
     <Item>
       <Source>grndTexture.jpg</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\grndTexture.xnb</Output>
-      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\grndTexture.xnb</Output>
+      <Time>2009-01-30T19:51:09.6292-05:00</Time>
     </Item>
     <Item>
       <Source>platformA.jpg</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformA.xnb</Output>
-      <Time>2009-01-31T03:25:26.8125-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformA.xnb</Output>
+      <Time>2009-01-30T19:51:09.6332-05:00</Time>
     </Item>
     <Item>
       <Source>platformB.jpg</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformB.xnb</Output>
-      <Time>2009-01-31T03:25:26.8125-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformB.xnb</Output>
+      <Time>2009-01-30T19:51:09.6352-05:00</Time>
     </Item>
     <Item>
       <Source>Player.png</Source>
@@ -133,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Player.xnb</Output>
-      <Time>2009-01-31T03:25:26.765625-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Player.xnb</Output>
+      <Time>2009-01-30T19:51:09.6222-05:00</Time>
     </Item>
     <Item>
       <Source>FoodSpriteSheet.png</Source>
@@ -142,70 +142,43 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\FoodSpriteSheet.xnb</Output>
-      <Time>2009-01-31T03:25:26.796875-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Intro\BoxOfElephants.png</Source>
-      <Name>Intro\BoxOfElephants</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Intro\BoxOfElephants.xnb</Output>
-      <Time>2009-01-31T16:56:04.8125-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Intro\GDD2007_Transparent.png</Source>
-      <Name>Intro\GDD2007_Transparent</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Intro\GDD2007_Transparent.xnb</Output>
-      <Time>2009-01-31T16:56:04.8125-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Intro\WarningLogo.png</Source>
-      <Name>Intro\WarningLogo</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Intro\WarningLogo.xnb</Output>
-      <Time>2009-01-31T16:56:21.71875-05:00</Time>
+      <Output>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\FoodSpriteSheet.xnb</Output>
+      <Time>2009-01-31T03:03:39.5572-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\</RootDirectory>
-      <LoggerRootDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\</LoggerRootDirectory>
-      <IntermediateDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2008-08-25T09:42:42-04:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2008-10-10T18:42:32-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2008-08-25T09:43:36-04:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2008-10-10T18:43:28-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2008-08-25T09:43:26-04:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2008-10-10T18:43:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2008-08-25T09:48:44-04:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2008-10-10T18:48:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2008-08-25T09:42:22-04:00</Value>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2008-10-10T18:48:50-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2008-10-22T15:18:56.296875-04:00</Value>
+        <Key>C:\Windows\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2008-11-13T19:48:26.587182-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

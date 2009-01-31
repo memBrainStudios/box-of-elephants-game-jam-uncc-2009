@@ -43,6 +43,8 @@ namespace Chubz
         float enemySpawnTimer = 0f;
         float totalTime = 0f;
 
+        Platforms[] platforms = new Platforms[40];
+
         Texture2D grndTexture;
         Texture2D NormalPlatformA;
         Texture2D NormalPlatformB;
@@ -127,6 +129,8 @@ namespace Chubz
             grndTexture = content.Load<Texture2D>("wall");
             goalTexture = content.Load<Texture2D>("Door");
             enemiesTexture = content.Load<Texture2D>("FoodSpriteSheet");
+
+            initPlatforms();
         }
 
 
@@ -136,6 +140,23 @@ namespace Chubz
         public override void UnloadContent()
         {
             content.Unload();
+        }
+
+        public void initPlatforms()
+        {
+            int count = 0;
+
+            for (int y = 0; y < Levels.Height; y++)
+            {
+                for (int x = 0; x < Levels.Width; x++)
+                {
+                    if (Levels.level_1[y, x] == 3)
+                    {
+                        platforms[count] = new Platforms(new Vector2(x, y), NormalPlatformB, 350);
+                        count++;
+                    }
+                }
+            }
         }
 
 
@@ -155,7 +176,7 @@ namespace Chubz
             if (!IsActive)
                 return;
 
-            player.Update(gameTime);
+            player.Update(gameTime, platforms);
 
             enemySpawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             totalTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -197,6 +218,12 @@ namespace Chubz
             {
                 if (enemiesGood[i] != null && enemiesGood[i].alive)
                     enemiesGood[i].Update(gameTime, player);
+            }
+
+            for (int i = 0; i < platforms.Length; i++)
+            {
+                if (platforms[i] != null && platforms[i].Active)
+                    platforms[i].Update(player);
             }
 
             // If we are in a network game, check if we should return to the lobby.
@@ -396,8 +423,18 @@ namespace Chubz
                     }
                     if ((Levels.level_1[i, j] == 3))//detecting moving plats
                     {
+<<<<<<< .mine
+                        Vector2 platformPosition = new Vector2(j, i);
+
+                        for (int a = 0; a < platforms.Length; a++)
+                        {
+                            if (platforms[a] != null && platforms[a].Active && platforms[a].OriginalVector.Equals(platformPosition))
+                                platforms[a].Draw(spriteBatch, playerPos);
+                        }
+=======
                         //spriteBatch.Draw(NormalPlatformB, tilePos, Color.White);
                         spriteBatch.Draw(NormalPlatformB, new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+>>>>>>> .r75
                     }
 
                     if (Levels.level_1[i, j] == 9)

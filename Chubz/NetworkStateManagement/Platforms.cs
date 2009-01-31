@@ -14,29 +14,51 @@ namespace Chubz
 {
     class Platforms
     {
-        public Vector2 MapPosition;
-        private Texture2D texture;
+        public Vector2 OriginalVector = new Vector2(0, 0);
+        public Vector2 MapPosition = new Vector2(0, 0);
+        public Vector2 Velocity = new Vector2(0, 0);
+        Texture2D texture;
+        int tolerance;
+        public bool Active = true;
 
-        public Platforms(Vector2 partial)
+        public Platforms(Vector2 partial, Texture2D tex, int weight)
         {
-            MapPosition = partial;
+            OriginalVector = partial;
+            MapPosition.X = OriginalVector.X * 32;
+            MapPosition.Y = OriginalVector.Y * 32;
+            texture = tex;
+            tolerance = weight;
         }
 
-        public void LoadContent(Texture2D t)
+        public void Update(Player player)
         {
-            texture = t;
+            Rectangle boundingBox, playerBoundingBox;
+
+            //bounding box only determines if the player is on top of the platform
+            boundingBox = new Rectangle((int)MapPosition.X, (int)MapPosition.Y - 2, 32, 1);
+            playerBoundingBox = new Rectangle((int)player.MapPosition.X, (int)player.MapPosition.Y, 127, 127);
+
+            if (Velocity.Y == 0f && player.Weight > tolerance && boundingBox.Intersects(playerBoundingBox))
+            {
+                Velocity.Y = 0.25f;
+
+                Levels.level_1[(int)MapPosition.Y / Levels.TileSize,
+                    (int)MapPosition.X / Levels.TileSize] = 0;
+            }
+
+            if (Velocity.Y != 0f)
+            {
+                Velocity.Y += 0.25f;
+                MapPosition += Velocity;
+
+                if (MapPosition.Y >= Levels.Height * Levels.TileSize)
+                    Active = false;
+            }
+
         }
-
-        public void Update()
+        public void Draw(SpriteBatch spriteBatch, Vector2 screenOffset)
         {
- 
-            // Platform Movement Code here!
-
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(texture, MapPosition, Color.White);
-
+            spriteBatch.Draw(texture, MapPosition + screenOffset, Color.White);
         }
     }
 }
