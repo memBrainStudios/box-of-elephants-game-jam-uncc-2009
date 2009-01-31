@@ -16,7 +16,7 @@ namespace Chubz
         public Vector2 MapPosition;
         public Vector2 ScreenPosition;
         public Vector2 Velocity = Vector2.Zero;
-
+        
         public AnimatingSprite sprite;
 
         public int Weight = 300;
