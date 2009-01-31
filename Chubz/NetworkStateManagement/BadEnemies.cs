@@ -44,10 +44,10 @@ namespace Chubz
         {
         }
 
-        public void Update(GameTime gameTime, Vector2 playerPosition)
+        public void Update(GameTime gameTime, Player player)
         {
             //run towards player
-            float distance = playerPosition.X - MapPosition.X;
+            float distance = player.MapPosition.X - MapPosition.X;
             if (distance > 0f && distance < 100f)
                 Velocity.X = 1f;
             else if (distance > -100f && distance < 0f)
@@ -55,7 +55,7 @@ namespace Chubz
             else
                 Velocity.X = 0f;
 
-            CollisionDetection();
+            CollisionDetection(player);
 
             if (Velocity.X < 0f)
                 sprite.CurrentAnimation = "left";
@@ -75,9 +75,9 @@ namespace Chubz
             sprite.Draw(spriteBatch, 0.5f);
         }
 
-        public void CollisionDetection()
+        public void CollisionDetection(Player player)
         {
-            Rectangle boundingBox, tileBoundingBox;
+            Rectangle boundingBox, tileBoundingBox, playerBoundingBox;
 
             if (Velocity.X != 0)
             {
@@ -151,6 +151,23 @@ namespace Chubz
                         }
                     }
                 }
+            }
+
+            //check player collision
+            boundingBox = new Rectangle(
+                (int)MapPosition.X, (int)MapPosition.Y,
+                63, 63
+                );
+
+            playerBoundingBox = new Rectangle(
+                (int)player.MapPosition.X, (int)player.MapPosition.Y,
+                127, 127
+                );
+
+            if (boundingBox.Intersects(playerBoundingBox))
+            {
+                player.Weight += 5;
+                alive = false;
             }
         }
     }
