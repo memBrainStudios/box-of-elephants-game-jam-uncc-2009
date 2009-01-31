@@ -147,7 +147,22 @@ namespace Chubz
                                                        bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
+            if (!IsActive)
+                return;
+
             player.Update(gameTime);
+
+            if (player.Win)
+            {
+                ScreenManager.AddScreen(new GameOverScreen(networkSession, true), (PlayerIndex)1);
+                return;
+            }
+            else if (player.Lose)
+            {
+                ScreenManager.AddScreen(new GameOverScreen(networkSession, false), (PlayerIndex)1);
+                return;
+            }
 
             for (int i = 0; i < Levels.level_1.GetLength(0); i++)
             {
@@ -394,6 +409,13 @@ namespace Chubz
                 }
             }
             player.Draw(spriteBatch);
+
+            spriteBatch.DrawString(
+                ScreenManager.Font,
+                "Weight: " + player.Weight,
+                new Vector2(10, 10),
+                Color.White
+                );
 
             if (networkSession != null)
             {
