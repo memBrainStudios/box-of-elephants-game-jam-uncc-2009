@@ -10,10 +10,15 @@ Content\chat_ready.xnb
 Content\chat_talking.xnb
 Content\chubs spritesheet.xnb
 Content\grndTexture.xnb
-Content\platformA.xnb
-Content\platformB.xnb
 Content\Player.xnb
 Content\FoodSpriteSheet.xnb
+Content\platformAold.xnb
+Content\platformBold.xnb
+Content\Door.xnb
+Content\platformA.xnb
+Content\platformB.xnb
+Content\platformC.xnb
+Content\wall.xnb
 Content\Audio\Chubz Audio.xgs
 Content\Audio\Wave Bank.xwb
 Content\Audio\Sound Bank.xsb
