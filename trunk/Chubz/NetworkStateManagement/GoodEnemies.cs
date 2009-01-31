@@ -51,9 +51,9 @@ namespace Chubz
             float distance = player.MapPosition.X + 63 - MapPosition.X - 31;
 
             if (distance > 0f && distance < 250f)
-                Velocity.X = -1f;
+                Velocity.X = -2f;
             else if (distance > -250f && distance < 0f)
-                Velocity.X = 1f;
+                Velocity.X = 2f;
             else
                 Velocity.X = 0f;
 
@@ -175,7 +175,7 @@ namespace Chubz
 
             if (boundingBox.Intersects(playerBoundingBox))
             {
-                player.Weight -= 2;
+                player.Weight -= 5;
                 alive = false;
 
                 string prevAnimation = player.sprite.CurrentAnimation;
