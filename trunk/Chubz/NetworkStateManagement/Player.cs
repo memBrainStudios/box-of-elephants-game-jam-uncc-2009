@@ -24,6 +24,9 @@ namespace Chubz
         //1 = light, 2 = medium, 3 = heavy
         public int Size = 2;
 
+        float exerciseTimer = 0f;
+        float exerciseTime = 0.5f;
+
         float eatTimer = 0f;
         float eatTime = 0.5f;
 
@@ -89,6 +92,15 @@ namespace Chubz
         {
             sprite.Update(gameTime);
             gameAudio.UpdateAudio();
+
+            if ((Velocity.X != 0f && Velocity.Y == 0) || Velocity.Y < 0f)
+                exerciseTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (exerciseTimer > exerciseTime)
+            {
+                Weight -= 2;
+                exerciseTimer = 0f;
+            }
 
             if (Weight > 600)
             {
