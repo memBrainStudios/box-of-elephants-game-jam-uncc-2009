@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Network State Management")]
-[assembly: AssemblyProduct("NetworkStateManagement")]
+[assembly: AssemblyTitle("Chubz")]
+[assembly: AssemblyProduct("Chubz")]
 [assembly: AssemblyDescription("This sample shows how to manage the transitions between common menus and gameplay states in a networked game.")]
 [assembly: AssemblyCompany("Microsoft")]
 
