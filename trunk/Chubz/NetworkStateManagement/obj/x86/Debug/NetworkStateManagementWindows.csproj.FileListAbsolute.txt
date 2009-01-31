@@ -22,3 +22,6 @@ C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\obj\x86\Debug
 C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\obj\x86\Debug\NetworkStateManagementWindows.csproj.GenerateResource.Cache
 C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\obj\x86\Debug\NetworkStateManagement.exe
 C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\obj\x86\Debug\NetworkStateManagement.pdb
+C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Sound Bank.xsb
+C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\bin\x86\Debug\test.xgs
+C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Wave Bank.xwb

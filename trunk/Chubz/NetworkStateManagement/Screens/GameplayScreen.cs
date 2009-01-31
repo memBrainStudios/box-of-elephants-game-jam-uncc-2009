@@ -16,6 +16,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Net;
+using Microsoft.Xna.Framework.Audio;
 #endregion
 
 namespace Chubz
@@ -48,6 +49,11 @@ namespace Chubz
         Texture2D BadEnemyTextureA;
         Texture2D BadEnemyTextureB;
         Texture2D temp;
+
+        private AudioEngine audioEngine;
+        private WaveBank waveBank;
+        private SoundBank soundBank;
+        public Cue sound1 = null;
 
         
 
@@ -98,6 +104,19 @@ namespace Chubz
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
             player = new Player(new Vector2(Levels.TileSize, 18*Levels.TileSize - 128));
             Levels.Initialize();
+
+            audioEngine = new AudioEngine("test.xgs");
+
+
+            waveBank = new WaveBank(audioEngine, "Wave Bank.xwb");
+
+            soundBank = new SoundBank(audioEngine, "Sound Bank.xsb");
+
+
+
+            sound1 = soundBank.GetCue("BackMusic_vol1_(Ant_Marc_Dave_Gir_7520_hifi)");
+            sound1.Play();
+
             initilizeEnemies();
 
         }
