@@ -168,6 +168,12 @@ namespace Chubz
             {
                 player.Weight += 5;
                 alive = false;
+
+                string prevAnimation = player.sprite.CurrentAnimation;
+                if (prevAnimation.Contains("fall"))
+                    player.sprite.CurrentAnimation = prevAnimation.Remove(prevAnimation.Length - 5) + " eat";
+                else if (!prevAnimation.Contains("eat"))
+                    player.sprite.CurrentAnimation = prevAnimation + " eat";
             }
         }
     }
