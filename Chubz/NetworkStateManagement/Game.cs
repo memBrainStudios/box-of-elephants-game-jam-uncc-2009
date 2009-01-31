@@ -54,9 +54,7 @@ namespace Chubz
             Components.Add(new MessageDisplayComponent(this));
             Components.Add(new GamerServicesComponent(this));
 
-            // Activate the first screens.
-            screenManager.AddScreen(new BackgroundScreen(), null);
-            screenManager.AddScreen(new MainMenuScreen(), null);
+            LoadingScreen.Load(screenManager, false, null, new WarningScreen());
 
             // Listen for invite notification events.
             NetworkSession.InviteAccepted += (sender, e)
