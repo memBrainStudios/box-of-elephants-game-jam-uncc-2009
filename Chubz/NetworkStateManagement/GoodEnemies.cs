@@ -14,8 +14,8 @@ namespace Chubz
     class GoodEnemies
     {
         public bool alive = false;
-        public Vector2 MapPosition;
-        public Vector2 OriginalVector;
+        public Vector2 MapPosition = new Vector2(0, 0);
+        public Vector2 OriginalVector = new Vector2(0, 0);
         Texture2D texture;
 
 
