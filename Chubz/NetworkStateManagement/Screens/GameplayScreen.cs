@@ -40,6 +40,9 @@ namespace Chubz
         GoodEnemies[] enemiesGood = new GoodEnemies[20];
         BadEnemies[] enemiesBad = new BadEnemies[20];
 
+        float enemySpawnTimer = 0f;
+        float totalTime = 0f;
+
         Texture2D grndTexture;
         Texture2D NormalPlatformA;
         Texture2D NormalPlatformB;
@@ -154,6 +157,9 @@ namespace Chubz
 
             player.Update(gameTime);
 
+            enemySpawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            totalTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             if (player.Win)
             {
                 ScreenManager.AddScreen(new GameOverScreen(networkSession, true), (PlayerIndex)1);
@@ -183,13 +189,13 @@ namespace Chubz
 
             for (int i = 0; i < enemiesBad.Length; i++)
             {
-                if (enemiesBad[i] != null)
+                if (enemiesBad[i] != null && enemiesBad[i].alive)
                     enemiesBad[i].Update(gameTime, player);
             }
 
             for (int i = 0; i < enemiesGood.Length; i++)
             {
-                if (enemiesGood[i] != null)
+                if (enemiesGood[i] != null && enemiesGood[i].alive)
                     enemiesGood[i].Update(gameTime, player);
             }
 
@@ -306,21 +312,26 @@ namespace Chubz
             // if is already monster check to kill or let live? if not create
             if (!existingEnemy(TestVector))
             {
-                for (int i = 0; i < Enemies.Length; i++)
+                if (enemySpawnTimer > 1f || totalTime < 1f)
                 {
-                    if (Enemies[i] == new Vector2(0, 0))//find first opening in list
+                    for (int i = 0; i < Enemies.Length; i++)
                     {
-                        Enemies[i] = TestVector; //create monster
-                        if (type)//if good enemy
+                        if (Enemies[i] == new Vector2(0, 0))//find first opening in list
                         {
-                             enemiesGood[i] = new GoodEnemies(OriginalVector, enemiesTexture, random.Next(6, 12)); //create good enemy
-                        }
-                        else // if bad enemy
-                        {
-                             enemiesBad[i] = new BadEnemies(OriginalVector, enemiesTexture, random.Next(6)); //create bad enemy
-                        }
+                            Enemies[i] = TestVector; //create monster
+                            if (type)//if good enemy
+                            {
+                                enemiesGood[i] = new GoodEnemies(OriginalVector, enemiesTexture, random.Next(6, 12)); //create good enemy
+                            }
+                            else // if bad enemy
+                            {
+                                enemiesBad[i] = new BadEnemies(OriginalVector, enemiesTexture, random.Next(6)); //create bad enemy
+                            }
 
-                        return;
+                            enemySpawnTimer = 0f;
+
+                            return;
+                        }
                     }
                 }
             }
@@ -392,7 +403,7 @@ namespace Chubz
 
                         for (int a = 0; a < enemiesGood.Length; a++)
                         {
-                            if (enemiesGood[a] != null && enemiesGood[a].OriginalVector.Equals(enemyPosition))
+                            if (enemiesGood[a] != null && enemiesGood[a].alive && enemiesGood[a].OriginalVector.Equals(enemyPosition))
                                 enemiesGood[a].Draw(spriteBatch, playerPos);
                         }
                     }
@@ -402,7 +413,7 @@ namespace Chubz
 
                         for (int a = 0; a < enemiesBad.Length; a++)
                         {
-                            if (enemiesBad[a] != null && enemiesBad[a].OriginalVector.Equals(enemyPosition))
+                            if (enemiesBad[a] != null && enemiesBad[a].alive && enemiesBad[a].OriginalVector.Equals(enemyPosition))
                                 enemiesBad[a].Draw(spriteBatch, playerPos);
                         }
                     }
