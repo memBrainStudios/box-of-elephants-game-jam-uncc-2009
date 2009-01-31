@@ -168,13 +168,13 @@ namespace Chubz
             for (int i = 0; i < enemiesBad.Length; i++)
             {
                 if (enemiesBad[i] != null)
-                    enemiesBad[i].Update(gameTime);
+                    enemiesBad[i].Update(gameTime, player.MapPosition);
             }
 
             for (int i = 0; i < enemiesGood.Length; i++)
             {
                 if (enemiesGood[i] != null)
-                    enemiesGood[i].Update(gameTime);
+                    enemiesGood[i].Update(gameTime, player.MapPosition);
             }
 
             // If we are in a network game, check if we should return to the lobby.
@@ -377,7 +377,7 @@ namespace Chubz
                         for (int a = 0; a < enemiesGood.Length; a++)
                         {
                             if (enemiesGood[a] != null && enemiesGood[a].OriginalVector.Equals(enemyPosition))
-                                enemiesGood[a].Draw(spriteBatch, tilePos);
+                                enemiesGood[a].Draw(spriteBatch, playerPos);
                         }
                     }
                     if ((Levels.level_1[i, j] == 5))
@@ -387,7 +387,7 @@ namespace Chubz
                         for (int a = 0; a < enemiesBad.Length; a++)
                         {
                             if (enemiesBad[a] != null && enemiesBad[a].OriginalVector.Equals(enemyPosition))
-                                enemiesBad[a].Draw(spriteBatch, tilePos);
+                                enemiesBad[a].Draw(spriteBatch, playerPos);
                         }
                     }
 
