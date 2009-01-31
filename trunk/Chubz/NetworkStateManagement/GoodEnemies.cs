@@ -48,10 +48,11 @@ namespace Chubz
         public void Update(GameTime gameTime, Player player)
         {
             //run away from player
-            float distance = player.MapPosition.X - MapPosition.X;
-            if (distance > 0f && distance < 100f)
+            float distance = player.MapPosition.X + 63 - MapPosition.X - 31;
+
+            if (distance > 0f && distance < 250f)
                 Velocity.X = -1f;
-            else if (distance > -100f && distance < 0f)
+            else if (distance > -250f && distance < 0f)
                 Velocity.X = 1f;
             else
                 Velocity.X = 0f;
