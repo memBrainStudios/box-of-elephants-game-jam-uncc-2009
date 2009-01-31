@@ -28,6 +28,26 @@ namespace Chubz
         ContentManager content;
         Texture2D backgroundTexture;
 
+        AnimatingSprite chubzSprite;
+        AnimatingSprite donutSprite;
+        AnimatingSprite orangeSprite;
+
+        Animation mediumRight;
+        Animation mediumLeft;
+
+        Animation donutRight;
+        Animation donutLeft;
+        Animation orangeRight;
+        Animation orangeLeft;
+
+        Vector2 pos;
+        Vector2 posD;
+        Vector2 posO;
+
+        bool right;
+        bool rightD;
+        bool rightO;
+
         #endregion
 
         #region Initialization
@@ -38,8 +58,55 @@ namespace Chubz
         /// </summary>
         public BackgroundScreen()
         {
+            //content = new ContentManager(
+            //content.RootDirectory = "Content";
+
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
+
+            chubzSprite = new AnimatingSprite();
+            donutSprite = new AnimatingSprite();
+            orangeSprite = new AnimatingSprite();
+
+            mediumRight = new Animation(512, 128, 4, 0, 128);
+            mediumRight.FramesPerSecond = 5;
+            mediumLeft = new Animation(512, 128, 4, 512, 128);
+            mediumLeft.FramesPerSecond = 5;
+
+            donutRight = new Animation(512, 128, 4, 0, 512);
+            donutRight.FramesPerSecond = 5;
+            donutLeft = new Animation(512, 128, 4, 512, 512);
+            donutLeft.FramesPerSecond = 5;
+
+            orangeRight = new Animation(512, 128, 4, 0, 1280);
+            orangeRight.FramesPerSecond = 5;
+            orangeLeft = new Animation(512, 128, 4, 512, 1280);
+            orangeLeft.FramesPerSecond = 5;
+
+            chubzSprite.Animations.Add("medium right", mediumRight);
+            chubzSprite.Animations.Add("medium left", mediumLeft);
+
+            donutSprite.Animations.Add("right", donutRight);
+            donutSprite.Animations.Add("left", donutLeft);
+            orangeSprite.Animations.Add("right", orangeRight);
+            orangeSprite.Animations.Add("left", orangeLeft);
+
+            chubzSprite.CurrentAnimation = "medium right";
+            chubzSprite.StopAnimation();
+
+            donutSprite.CurrentAnimation = "right";
+            donutSprite.StopAnimation();
+
+            orangeSprite.CurrentAnimation = "right";
+            orangeSprite.StopAnimation();
+
+            pos = new Vector2(100, 472);
+            posD = new Vector2(0, 536);
+            posO = new Vector2(278, 536);
+
+            right = true;
+            rightD = true;
+            rightO = true;
         }
 
 
@@ -56,6 +123,9 @@ namespace Chubz
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
             backgroundTexture = content.Load<Texture2D>("background");
+            chubzSprite.Texture = content.Load<Texture2D>("chubs spritesheet");
+            donutSprite.Texture = content.Load<Texture2D>("FoodSpriteSheet");
+            orangeSprite.Texture = content.Load<Texture2D>("FoodSpriteSheet");
         }
 
 
@@ -84,6 +154,63 @@ namespace Chubz
                                                        bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, false);
+            if (pos.X == 672)
+                right = false;
+            if (pos.X == 0)
+                right = true;
+
+            if (right)
+            {
+                pos.X++;
+                chubzSprite.CurrentAnimation = "medium right";
+                chubzSprite.StartAnimation();
+            }
+            else if (!right)
+            {
+                pos.X--;
+                chubzSprite.CurrentAnimation = "medium left";
+                chubzSprite.StartAnimation();
+            }
+
+            if (posD.X == 672)
+                rightD = false;
+            if (posD.X == 0)
+                rightD = true;
+
+            if (rightD)
+            {
+                posD.X++;
+                donutSprite.CurrentAnimation = "right";
+                donutSprite.StartAnimation();
+            }
+            else if (!rightD)
+            {
+                posD.X--;
+                donutSprite.CurrentAnimation = "left";
+                donutSprite.StartAnimation();
+            }
+
+            if (posO.X == 672)
+                rightO = false;
+            if (posO.X == 0)
+                rightO = true;
+
+            if (rightO)
+            {
+                posO.X++;
+                orangeSprite.CurrentAnimation = "right";
+                orangeSprite.StartAnimation();
+            }
+            else if (!rightO)
+            {
+                posO.X--;
+                orangeSprite.CurrentAnimation = "left";
+                orangeSprite.StartAnimation();
+            }
+
+            chubzSprite.Update(gameTime);
+            donutSprite.Update(gameTime);
+            orangeSprite.Update(gameTime);
         }
 
 
@@ -97,12 +224,17 @@ namespace Chubz
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
             byte fade = TransitionAlpha;
 
-            spriteBatch.Begin(SpriteBlendMode.None);
+            spriteBatch.Begin(/*SpriteBlendMode.None*/);
 
             spriteBatch.Draw(backgroundTexture, fullscreen,
                              new Color(fade, fade, fade));
-
-            spriteBatch.End();
+            orangeSprite.Position = posO;
+            orangeSprite.Draw(spriteBatch, 0.5f);
+            chubzSprite.Position = pos;
+            chubzSprite.Draw(spriteBatch);
+            donutSprite.Position = posD;
+            donutSprite.Draw(spriteBatch, 0.5f);
+            spriteBatch.End(); 
         }
 
 
