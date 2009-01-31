@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>gamefont.spritefont</Source>
+      <Name>gamefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gamefont.xnb</Output>
+      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+    </Item>
+    <Item>
+      <Source>menufont.spritefont</Source>
+      <Name>menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\menufont.xnb</Output>
+      <Time>2009-01-31T03:25:26.78125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>background.png</Source>
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\background.xnb</Output>
+      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+    </Item>
+    <Item>
+      <Source>blank.png</Source>
+      <Name>blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\blank.xnb</Output>
+      <Time>2009-01-31T03:25:26.828125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>gradient.png</Source>
+      <Name>gradient</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gradient.xnb</Output>
+      <Time>2009-01-31T03:25:26.765625-05:00</Time>
+    </Item>
+    <Item>
+      <Source>cat.tga</Source>
+      <Name>cat</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\cat.xnb</Output>
+      <Time>2009-01-31T03:25:26.765625-05:00</Time>
+    </Item>
+    <Item>
+      <Source>chat_able.png</Source>
+      <Name>chat_able</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_able.xnb</Output>
+      <Time>2009-01-31T03:25:26.765625-05:00</Time>
+    </Item>
+    <Item>
+      <Source>chat_mute.png</Source>
+      <Name>chat_mute</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_mute.xnb</Output>
+      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+    </Item>
+    <Item>
+      <Source>chat_ready.png</Source>
+      <Name>chat_ready</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_ready.xnb</Output>
+      <Time>2009-01-31T03:25:26.78125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>chat_talking.png</Source>
+      <Name>chat_talking</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_talking.xnb</Output>
+      <Time>2009-01-31T03:25:26.828125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>chubs spritesheet.png</Source>
+      <Name>chubs spritesheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chubs spritesheet.xnb</Output>
+      <Time>2009-01-31T03:25:26.8125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>grndTexture.jpg</Source>
+      <Name>grndTexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\grndTexture.xnb</Output>
+      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+    </Item>
+    <Item>
+      <Source>platformA.jpg</Source>
+      <Name>platformA</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformA.xnb</Output>
+      <Time>2009-01-31T03:25:26.8125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>platformB.jpg</Source>
+      <Name>platformB</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformB.xnb</Output>
+      <Time>2009-01-31T03:25:26.8125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player.png</Source>
+      <Name>Player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Player.xnb</Output>
+      <Time>2009-01-31T03:25:26.765625-05:00</Time>
+    </Item>
+    <Item>
+      <Source>FoodSpriteSheet.png</Source>
+      <Name>FoodSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\FoodSpriteSheet.xnb</Output>
+      <Time>2009-01-31T03:25:26.796875-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Intro\BoxOfElephants.png</Source>
+      <Name>Intro\BoxOfElephants</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Intro\BoxOfElephants.xnb</Output>
+      <Time>2009-01-31T16:56:04.8125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Intro\GDD2007_Transparent.png</Source>
+      <Name>Intro\GDD2007_Transparent</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Intro\GDD2007_Transparent.xnb</Output>
+      <Time>2009-01-31T16:56:04.8125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Intro\WarningLogo.png</Source>
+      <Name>Intro\WarningLogo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Intro\WarningLogo.xnb</Output>
+      <Time>2009-01-31T16:56:21.71875-05:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\</RootDirectory>
+      <LoggerRootDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2008-08-25T09:42:42-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2008-08-25T09:43:36-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2008-08-25T09:43:26-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2008-08-25T09:48:44-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2008-08-25T09:42:22-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2008-10-22T15:18:56.296875-04:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
