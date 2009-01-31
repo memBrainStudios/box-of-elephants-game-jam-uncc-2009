@@ -71,7 +71,15 @@ namespace Chubz
 
             // Player Movement Code here!
             //movement code modifies the MapPosition  allowing scrolling action
-            KeyboardState ks = Keyboard.GetState();
+            
+
+
+        }
+
+        public void HandleInput(InputState input)
+        {
+            KeyboardState ks = input.CurrentKeyboardStates[0];
+            PlayerIndex playerIndex;
 
             if (ks.IsKeyDown(Keys.Left))
             {
@@ -107,8 +115,15 @@ namespace Chubz
                 sprite.StopAnimation();
             }
 
-
+            //change chub's size (just for testing)
+            if (input.IsNewKeyPress(Keys.Enter, null, out playerIndex))
+            {
+                Size++;
+                if (Size > 3)
+                    Size = 1;
+            }
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Position = ScreenPosition;

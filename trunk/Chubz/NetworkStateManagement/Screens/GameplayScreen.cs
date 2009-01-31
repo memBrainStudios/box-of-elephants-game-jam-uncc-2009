@@ -228,13 +228,8 @@ namespace Chubz
                 return false;
             }
 
-            //change chub's size (just for testing)
-            if (input.IsNewKeyPress(Keys.Space, playerIndex, out playerIndex))
-            {
-                player.Size++;
-                if (player.Size > 3)
-                    player.Size = 1;
-            }
+            player.HandleInput(input);
+            
 
             return true;
         }
