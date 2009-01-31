@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimatingSprite.cs" />
     <Compile Include="Levels.cs" />
     <Compile Include="Platforms.cs" />
     <Compile Include="Player.cs" />
