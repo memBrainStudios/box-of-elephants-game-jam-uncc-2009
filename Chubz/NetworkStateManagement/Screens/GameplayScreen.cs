@@ -43,13 +43,7 @@ namespace Chubz
         Texture2D grndTexture;
         Texture2D NormalPlatformA;
         Texture2D NormalPlatformB;
-        Texture2D GoodEnemyTextureA;
-        Texture2D GoodEnemyTextureB;
-        Texture2D BadEnemyTextureA;
-        Texture2D BadEnemyTextureB;
-        Texture2D temp;
-
-        
+        Texture2D enemiesTexture;
 
         #endregion
 
@@ -124,13 +118,11 @@ namespace Chubz
             ScreenManager.Game.ResetElapsedTime();
 
             player.LoadContent(content.Load<Texture2D>("chubs spritesheet"));
-            GoodEnemyTextureA = content.Load<Texture2D>("Player");
-            GoodEnemyTextureB = content.Load<Texture2D>("Player");
-            BadEnemyTextureA = content.Load<Texture2D>("Player");
-            BadEnemyTextureB = content.Load<Texture2D>("Player");
             NormalPlatformA = content.Load<Texture2D>("platformA");
             NormalPlatformB = content.Load<Texture2D>("platformB");
             grndTexture = content.Load<Texture2D>("grndTexture");
+
+            enemiesTexture = content.Load<Texture2D>("FoodSpriteSheet");
         }
 
 
@@ -156,21 +148,35 @@ namespace Chubz
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             player.Update(gameTime);
-                for (int i = 0; i < Levels.level_1.GetLength(0); i++)
-                {
-                    for (int j = 0; j < Levels.level_1.GetLength(1); j++)
-                    {
-                        if ((Levels.level_1[i, j] == 4))//detecting GoodEnemies
-                        {
-                            UpdateEnemy(new Vector2(j, i), true);
-                        }
-                        if ((Levels.level_1[i, j] == 5))//detecting BadEnemies
-                        {
-                            UpdateEnemy(new Vector2(j, i), false);
-                        }
 
+            for (int i = 0; i < Levels.level_1.GetLength(0); i++)
+            {
+                for (int j = 0; j < Levels.level_1.GetLength(1); j++)
+                {
+                    if ((Levels.level_1[i, j] == 4))//detecting GoodEnemies
+                    {
+                        UpdateEnemy(new Vector2(j, i), true);
                     }
+                    if ((Levels.level_1[i, j] == 5))//detecting BadEnemies
+                    {
+                        UpdateEnemy(new Vector2(j, i), false);
+                    }
+
                 }
+            }
+
+            for (int i = 0; i < enemiesBad.Length; i++)
+            {
+                if (enemiesBad[i] != null)
+                    enemiesBad[i].Update(gameTime);
+            }
+
+            for (int i = 0; i < enemiesGood.Length; i++)
+            {
+                if (enemiesGood[i] != null)
+                    enemiesGood[i].Update(gameTime);
+            }
+
             // If we are in a network game, check if we should return to the lobby.
             if ((networkSession != null) && !IsExiting)
             {
@@ -291,20 +297,11 @@ namespace Chubz
                         Enemies[i] = TestVector; //create monster
                         if (type)//if good enemy
                         {
-
-                             enemiesGood[i] = new GoodEnemies(OriginalVector, GoodEnemyTextureA); //create good enemy
+                             enemiesGood[i] = new GoodEnemies(OriginalVector, enemiesTexture, random.Next(6, 12)); //create good enemy
                         }
                         else // if bad enemy
                         {
-                            if (((random.NextDouble() - 0.5) * 10) % 0 == 0)// if random even number then A type else B type
-                            {
-                                temp = BadEnemyTextureA;
-                            }
-                            else
-                            {
-                                temp = BadEnemyTextureB;
-                            }
-                             enemiesBad[i] = new BadEnemies(OriginalVector, temp); //create bad enemy
+                             enemiesBad[i] = new BadEnemies(OriginalVector, enemiesTexture, random.Next(6)); //create bad enemy
                         }
 
                         return;
@@ -345,7 +342,7 @@ namespace Chubz
         {
             // This game has a blue background. Why? Because!
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
-                                               Color.Black, 0, 0);
+                                               Color.ForestGreen, 0, 0);
 
             // Our player and enemy are both actually just text strings.
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
@@ -375,21 +372,21 @@ namespace Chubz
                     }
                     if ((Levels.level_1[i, j] == 4))
                     {
-                        Vector2 enemyPosition = new Vector2(j * Levels.TileSize, i * Levels.TileSize);
+                        Vector2 enemyPosition = new Vector2(j, i);
 
                         for (int a = 0; a < enemiesGood.Length; a++)
                         {
-                            if (enemiesGood[a] != null && enemiesGood[a].MapPosition.Equals(enemyPosition))
+                            if (enemiesGood[a] != null && enemiesGood[a].OriginalVector.Equals(enemyPosition))
                                 enemiesGood[a].Draw(spriteBatch, tilePos);
                         }
                     }
                     if ((Levels.level_1[i, j] == 5))
                     {
-                        Vector2 enemyPosition = new Vector2(j * Levels.TileSize, i * Levels.TileSize);
+                        Vector2 enemyPosition = new Vector2(j, i);
 
                         for (int a = 0; a < enemiesBad.Length; a++)
                         {
-                            if (enemiesBad[a] != null && enemiesBad[a].MapPosition.Equals(enemyPosition))
+                            if (enemiesBad[a] != null && enemiesBad[a].OriginalVector.Equals(enemyPosition))
                                 enemiesBad[a].Draw(spriteBatch, tilePos);
                         }
                     }
