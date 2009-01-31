@@ -38,6 +38,12 @@ namespace Chubz
 
         Random random = new Random();
 
+        Player player;
+        Texture2D grndTexture;
+        Texture2D NormalPlatformA;
+        Texture2D NormalPlatformB;
+        
+
         #endregion
 
         #region Properties
@@ -83,6 +89,9 @@ namespace Chubz
 
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
+            player = new Player(new Vector2(64, 576));
+            Levels.Initialize();
+
         }
 
 
@@ -105,6 +114,11 @@ namespace Chubz
             // timing mechanism that we have just finished a very long frame, and that
             // it should not try to catch up.
             ScreenManager.Game.ResetElapsedTime();
+
+            player.LoadContent(content.Load<Texture2D>("player"));
+            NormalPlatformA = content.Load<Texture2D>("platformA");
+            NormalPlatformB = content.Load<Texture2D>("platformB");
+            grndTexture = content.Load<Texture2D>("grndTexture");
         }
 
 
@@ -129,7 +143,7 @@ namespace Chubz
                                                        bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-
+            player.Update();
             if (IsActive)
             {
                 // Apply some random jitter to make the enemy move around.
@@ -249,18 +263,39 @@ namespace Chubz
         {
             // This game has a blue background. Why? Because!
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
-                                               Color.CornflowerBlue, 0, 0);
+                                               Color.Black, 0, 0);
 
             // Our player and enemy are both actually just text strings.
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(gameFont, "// TODO", playerPosition, Color.Green);
+            for (int i = 0; i < Levels.level_1.GetLength(0); i++)
+            {
+                for (int j = 0; j < Levels.level_1.GetLength(1); j++)
+                {
+                    Vector2 tilePos = new Vector2(j * 32, i * 32);
+                    Vector2 playerPos = player.ScreenPosition - player.MapPosition;
 
-            spriteBatch.DrawString(gameFont, "Insert Gameplay Here",
-                                   enemyPosition, Color.DarkRed);
+                    tilePos += playerPos;
 
+
+                    if ((Levels.level_1[i, j] == 1))
+                    {
+                        spriteBatch.Draw(grndTexture, tilePos, Color.White);
+                    }
+                    if ((Levels.level_1[i, j] == 2))
+                    {
+                        spriteBatch.Draw(NormalPlatformA, tilePos, Color.White);
+                    }
+                    if ((Levels.level_1[i, j] == 3))
+                    {
+                        spriteBatch.Draw(NormalPlatformB, tilePos, Color.White);
+                    }
+
+                }
+            }
+            player.Draw(spriteBatch);      
             if (networkSession != null)
             {
                 string message = "Players: " + networkSession.AllGamers.Count;

@@ -91,6 +91,51 @@
       <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_talking.xnb</Output>
       <Time>2008-10-22T09:34:34-04:00</Time>
     </Item>
+    <Item>
+      <Source>chubs spritesheet.png</Source>
+      <Name>chubs spritesheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chubs spritesheet.xnb</Output>
+      <Time>2009-01-30T17:26:15.078125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>grndTexture.jpg</Source>
+      <Name>grndTexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\grndTexture.xnb</Output>
+      <Time>2009-01-30T19:37:59.90625-05:00</Time>
+    </Item>
+    <Item>
+      <Source>platformA.jpg</Source>
+      <Name>platformA</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformA.xnb</Output>
+      <Time>2009-01-30T19:38:21.1875-05:00</Time>
+    </Item>
+    <Item>
+      <Source>platformB.jpg</Source>
+      <Name>platformB</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformB.xnb</Output>
+      <Time>2009-01-30T19:38:15.453125-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player.png</Source>
+      <Name>Player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Player.xnb</Output>
+      <Time>2009-01-30T19:38:48.15625-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
