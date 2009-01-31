@@ -115,7 +115,7 @@ namespace Chubz
             // it should not try to catch up.
             ScreenManager.Game.ResetElapsedTime();
 
-            player.LoadContent(content.Load<Texture2D>("player"));
+            player.LoadContent(content.Load<Texture2D>("chubs spritesheet"));
             NormalPlatformA = content.Load<Texture2D>("platformA");
             NormalPlatformB = content.Load<Texture2D>("platformB");
             grndTexture = content.Load<Texture2D>("grndTexture");
@@ -143,7 +143,8 @@ namespace Chubz
                                                        bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-            player.Update();
+            player.Update(gameTime);
+
             if (IsActive)
             {
                 // Apply some random jitter to make the enemy move around.
@@ -227,30 +228,13 @@ namespace Chubz
                 return false;
             }
 
-            // Otherwise move the player position.
-            Vector2 movement = Vector2.Zero;
-
-            if (keyboardState.IsKeyDown(Keys.Left))
-                movement.X--;
-
-            if (keyboardState.IsKeyDown(Keys.Right))
-                movement.X++;
-
-            if (keyboardState.IsKeyDown(Keys.Up))
-                movement.Y--;
-
-            if (keyboardState.IsKeyDown(Keys.Down))
-                movement.Y++;
-
-            Vector2 thumbstick = gamePadState.ThumbSticks.Left;
-
-            movement.X += thumbstick.X;
-            movement.Y -= thumbstick.Y;
-
-            if (movement.Length() > 1)
-                movement.Normalize();
-
-            playerPosition += movement * 2;
+            //change chub's size (just for testing)
+            if (input.IsNewKeyPress(Keys.Space, playerIndex, out playerIndex))
+            {
+                player.Size++;
+                if (player.Size > 3)
+                    player.Size = 1;
+            }
 
             return true;
         }
