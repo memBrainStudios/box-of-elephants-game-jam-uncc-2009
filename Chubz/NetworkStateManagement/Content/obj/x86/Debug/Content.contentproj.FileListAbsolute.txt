@@ -3,3 +3,4 @@ E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\obj\x86\Debug\ResolveAs
 C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\David\My Documents\GlobalGameJam2009\Chubz\NetworkStateManagement\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\Content\obj\x86\Debug\ResolveAssemblyReference.cache
