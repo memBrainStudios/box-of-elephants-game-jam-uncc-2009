@@ -16,6 +16,7 @@ namespace Chubz
         public Vector2 MapPosition;
         public Vector2 ScreenPosition;
         public Vector2 Velocity = Vector2.Zero;
+        public float Ground;
 
         AnimatingSprite sprite;
 
@@ -27,6 +28,7 @@ namespace Chubz
         {
             MapPosition = partial;
             ScreenPosition = new Vector2(400, 300);
+            Ground = MapPosition.Y;
         }
 
         public void LoadContent(Texture2D t)
@@ -75,21 +77,16 @@ namespace Chubz
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
-
-            // Player Movement Code here!
-            //movement code modifies the MapPosition  allowing scrolling action
-            
-
-
         }
 
         public void HandleInput(InputState input)
         {
             KeyboardState ks = input.CurrentKeyboardStates[0];
             PlayerIndex playerIndex;
+            bool keyPressed = false;
 
             //on ground
-            if (MapPosition.Y == 500)
+            if (MapPosition.Y == Ground)
             {
                 if (ks.IsKeyDown(Keys.Left))
                 {
@@ -104,6 +101,7 @@ namespace Chubz
 
                     MapPosition += Velocity;
                     sprite.StartAnimation();
+                    keyPressed = true;
                 }
                 else if (ks.IsKeyDown(Keys.Right))
                 {
@@ -118,14 +116,60 @@ namespace Chubz
 
                     MapPosition += Velocity;
                     sprite.StartAnimation();
+                    keyPressed = true;
                 }
-                else if (input.IsNewKeyPress(Keys.Space, null, out playerIndex))
-                {
 
-                }
-                else
+                if (input.IsNewKeyPress(Keys.Space, null, out playerIndex))
                 {
+                    Velocity.Y = -(12 - 1.5f * Size);
+
+                    if (Size == 1)
+                    {
+                        if (sprite.CurrentAnimation.Equals("light right"))
+                            sprite.CurrentAnimation = "light right fall";
+                        else
+                            sprite.CurrentAnimation = "light left fall";
+                    }
+                    else if (Size == 2)
+                    {
+                        if (sprite.CurrentAnimation.Equals("medium right"))
+                            sprite.CurrentAnimation = "medium right fall";
+                        else
+                            sprite.CurrentAnimation = "medium left fall";
+                    }
+                    else if (Size == 3)
+                    {
+                        if (sprite.CurrentAnimation.Equals("heavy right"))
+                            sprite.CurrentAnimation = "heavy right fall";
+                        else
+                            sprite.CurrentAnimation = "heavy left fall";
+                    }
+
+                    MapPosition += Velocity;
+                    sprite.StartAnimation();
+                    keyPressed = true;
+                }
+
+                if (!keyPressed)
+                {
+                    Velocity = Vector2.Zero;
                     sprite.Animations[sprite.CurrentAnimation].Reset();
+                    sprite.StopAnimation();
+                }
+            }
+
+            //gravity
+            if (MapPosition.Y < Ground)
+            {
+                Velocity.Y += 0.25f;
+                MapPosition += Velocity;
+
+                if (MapPosition.Y >= Ground)
+                {
+                    MapPosition.Y = Ground;
+                    Velocity = Vector2.Zero;
+                    sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 5);
+                    sprite.Animations[sprite.CurrentAnimation].Reset(); 
                     sprite.StopAnimation();
                 }
             }
