@@ -74,89 +74,9 @@ namespace Chubz
 
         public void Update(GameTime gameTime)
         {
-            Rectangle boundingBox, tileBoundingBox;
             sprite.Update(gameTime);
 
-            if (Velocity.X != 0)
-            {
-                MapPosition.X += Velocity.X;
-
-                boundingBox = new Rectangle(
-                    (int)MapPosition.X, (int)MapPosition.Y,
-                    127, 127
-                    );
-
-                for (int y = (int)(MapPosition.Y / Levels.TileSize); y <= (int)((MapPosition.Y + 127) / Levels.TileSize); y++)
-                {
-                    for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
-                    {
-                        if (Levels.level_1[y, x] != 0)
-                        {
-                            tileBoundingBox = new Rectangle(
-                                Levels.TileSize * x, Levels.TileSize * y,
-                                Levels.TileSize, Levels.TileSize
-                                );
-
-                            if (boundingBox.Intersects(tileBoundingBox))
-                            {
-                                if (Velocity.X < 0)
-                                    MapPosition.X = (x + 1) * Levels.TileSize;
-                                else
-                                    MapPosition.X = x * Levels.TileSize - 128;
-                                Velocity.X = 0f;
-                            }
-                        }
-                    }
-                }
-            }
-
-            //gravity
-            if (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] == 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] == 0)
-            {
-                Velocity.Y += 0.25f;
-            }
-
-            MapPosition.Y += Velocity.Y;
-
-            boundingBox = new Rectangle(
-                (int)MapPosition.X, (int)MapPosition.Y,
-                127, 127
-                );
-
-            for (int y = (int)(MapPosition.Y / Levels.TileSize); y <= (int)((MapPosition.Y + 127) / Levels.TileSize); y++)
-            {
-                for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
-                {
-                    if (Levels.level_1[y, x] != 0)
-                    {
-                        tileBoundingBox = new Rectangle(
-                            Levels.TileSize * x, Levels.TileSize * y,
-                            Levels.TileSize, Levels.TileSize
-                            );
-
-                        if (boundingBox.Intersects(tileBoundingBox))
-                        {
-                            if (Velocity.Y < 0f)
-                            {
-                                MapPosition.Y = (y + 1) * Levels.TileSize;
-                                Velocity.Y = 0f;
-                            }
-                            else if (Velocity.Y > 0f)
-                                MapPosition.Y = y * Levels.TileSize - 128;
-                        }
-                    }
-                }
-            }
-
-            //just landed on a platform
-            if (sprite.CurrentAnimation.Contains("fall") &&
-                (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] != 0 ||
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] != 0))
-            {
-                sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 5);
-                sprite.StopAnimation();
-            }
+            CollisionDetection();
         }
 
         public void HandleInput(InputState input)
@@ -166,8 +86,10 @@ namespace Chubz
             bool keyPressed = false;
 
             //on solid platform
-            if (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] != 0 ||
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] != 0)
+            if ((Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] > 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] < 4) ||
+                (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] > 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] < 4))
             {
                 if (ks.IsKeyDown(Keys.Left))
                 {
@@ -249,6 +171,96 @@ namespace Chubz
         {
             sprite.Position = ScreenPosition;
             sprite.Draw(spriteBatch);
+        }
+
+        public void CollisionDetection()
+        {
+            Rectangle boundingBox, tileBoundingBox;
+
+            if (Velocity.X != 0)
+            {
+                MapPosition.X += Velocity.X;
+
+                boundingBox = new Rectangle(
+                    (int)MapPosition.X, (int)MapPosition.Y,
+                    127, 127
+                    );
+
+                for (int y = (int)(MapPosition.Y / Levels.TileSize); y <= (int)((MapPosition.Y + 127) / Levels.TileSize); y++)
+                {
+                    for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
+                    {
+                        if (y >= Levels.Height || x >= Levels.Width ||
+                            (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 4))
+                        {
+                            tileBoundingBox = new Rectangle(
+                                Levels.TileSize * x, Levels.TileSize * y,
+                                Levels.TileSize, Levels.TileSize
+                                );
+
+                            if (boundingBox.Intersects(tileBoundingBox))
+                            {
+                                if (Velocity.X < 0)
+                                    MapPosition.X = (x + 1) * Levels.TileSize;
+                                else
+                                    MapPosition.X = x * Levels.TileSize - 128;
+                                Velocity.X = 0f;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //gravity
+            if (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] == 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] == 0)
+            {
+                Velocity.Y += 0.25f;
+            }
+
+            MapPosition.Y += Velocity.Y;
+
+            boundingBox = new Rectangle(
+                (int)MapPosition.X, (int)MapPosition.Y,
+                127, 127
+                );
+
+            for (int y = (int)(MapPosition.Y / Levels.TileSize); y <= (int)((MapPosition.Y + 127) / Levels.TileSize); y++)
+            {
+                for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
+                {
+                    if (y >= Levels.Height || x >= Levels.Width ||
+                            (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 4))
+                    {
+                        tileBoundingBox = new Rectangle(
+                            Levels.TileSize * x, Levels.TileSize * y,
+                            Levels.TileSize, Levels.TileSize
+                            );
+
+                        if (boundingBox.Intersects(tileBoundingBox))
+                        {
+                            if (Velocity.Y < 0f)
+                            {
+                                MapPosition.Y = (y + 1) * Levels.TileSize;
+                                Velocity.Y = 0f;
+                            }
+                            else if (Velocity.Y > 0f)
+                                MapPosition.Y = y * Levels.TileSize - 128;
+                        }
+                    }
+                }
+            }
+
+            //just landed on a platform
+            if (sprite.CurrentAnimation.Contains("fall") &&
+                ((Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] > 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] < 4) ||
+                (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] > 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] < 4)))
+            {
+                sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 5);
+                sprite.StopAnimation();
+            }
         }
     }
     
