@@ -124,8 +124,8 @@ namespace Chubz
             player.LoadContent(content.Load<Texture2D>("chubs spritesheet"));
             NormalPlatformA = content.Load<Texture2D>("platformA");
             NormalPlatformB = content.Load<Texture2D>("platformB");
-            grndTexture = content.Load<Texture2D>("grndTexture");
-            goalTexture = content.Load<Texture2D>("gradient");
+            grndTexture = content.Load<Texture2D>("wall");
+            goalTexture = content.Load<Texture2D>("Door");
             enemiesTexture = content.Load<Texture2D>("FoodSpriteSheet");
         }
 
@@ -374,8 +374,7 @@ namespace Chubz
             // Our player and enemy are both actually just text strings.
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
-            spriteBatch.Begin();
-
+            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.BackToFront, SaveStateMode.None);
             for (int i = 0; i < Levels.level_1.GetLength(0); i++)
             {
                 for (int j = 0; j < Levels.level_1.GetLength(1); j++)
@@ -387,16 +386,27 @@ namespace Chubz
 
                     if ((Levels.level_1[i, j] == 1))//detecting walls
                     {
-                        spriteBatch.Draw(grndTexture, tilePos, Color.White); 
+                        //spriteBatch.Draw(grndTexture, tilePos, Color.White);
+                        spriteBatch.Draw(grndTexture, new Rectangle((int)tilePos.X,(int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
                     }
                     if ((Levels.level_1[i, j] == 2))//detecting immobile plats
                     {
-                        spriteBatch.Draw(NormalPlatformA, tilePos, Color.White); 
+                        //spriteBatch.Draw(NormalPlatformA, tilePos, Color.White);
+                        spriteBatch.Draw(NormalPlatformA, new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
                     }
                     if ((Levels.level_1[i, j] == 3))//detecting moving plats
                     {
-                        spriteBatch.Draw(NormalPlatformB, tilePos, Color.White); 
+                        //spriteBatch.Draw(NormalPlatformB, tilePos, Color.White);
+                        spriteBatch.Draw(NormalPlatformB, new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
                     }
+
+                    if (Levels.level_1[i, j] == 9)
+                    {
+                        /*spriteBatch.Draw(goalTexture,
+                            new Rectangle((int)tilePos.X, (int)tilePos.Y, 128, 128), Color.White);*/
+                        spriteBatch.Draw(goalTexture, new Rectangle((int)tilePos.X, (int)tilePos.Y, 128, 128), new Rectangle(0, 0, 128, 128), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+                    }
+
                     if ((Levels.level_1[i, j] == 4))
                     {
                         Vector2 enemyPosition = new Vector2(j, i);
@@ -417,22 +427,30 @@ namespace Chubz
                                 enemiesBad[a].Draw(spriteBatch, playerPos);
                         }
                     }
-                    if (Levels.level_1[i, j] == 9)
-                    {
-                        spriteBatch.Draw(goalTexture,
-                            new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), Color.White);
-                    }
+                    
 
                 }
             }
+
             player.Draw(spriteBatch);
 
-            spriteBatch.DrawString(
+            /*spriteBatch.DrawString(
                 ScreenManager.Font,
                 "Weight: " + player.Weight,
                 new Vector2(10, 10),
                 Color.White
-                );
+                );*/
+
+            spriteBatch.DrawString(
+                ScreenManager.Font,
+                "Weight: " + player.Weight + " lbs.",
+                new Vector2(10, 10),
+                Color.White,
+                0f,
+                new Vector2(0, 0),
+                1f,
+                SpriteEffects.None,
+                0f);
 
             if (networkSession != null)
             {
