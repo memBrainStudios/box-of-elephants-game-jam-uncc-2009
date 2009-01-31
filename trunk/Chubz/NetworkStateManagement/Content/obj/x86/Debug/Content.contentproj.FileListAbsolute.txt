@@ -1,0 +1,2 @@
+E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Box Of Elephants\Chubz\NetworkStateManagement\Content\obj\x86\Debug\Audio\Chubz Audio.xml
