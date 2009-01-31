@@ -79,6 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatingSprite.cs" />
+    <Compile Include="BadEnemies.cs" />
+    <Compile Include="GoodEnemies.cs" />
     <Compile Include="Levels.cs" />
     <Compile Include="Platforms.cs" />
     <Compile Include="Player.cs" />

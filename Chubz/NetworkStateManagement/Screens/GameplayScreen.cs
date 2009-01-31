@@ -9,6 +9,7 @@
 
 #region Using Statements
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -19,6 +20,7 @@ using Microsoft.Xna.Framework.Net;
 
 namespace Chubz
 {
+
     /// <summary>
     /// This screen implements the actual game logic. It is just a
     /// placeholder to get the idea across: you'll probably want to
@@ -27,21 +29,26 @@ namespace Chubz
     class GameplayScreen : GameScreen
     {
         #region Fields
-
+        Vector2[] Enemies = new Vector2[10];
         NetworkSession networkSession;
-
         ContentManager content;
         SpriteFont gameFont;
-
-        Vector2 playerPosition = new Vector2(100, 100);
-        Vector2 enemyPosition = new Vector2(100, 100);
 
         Random random = new Random();
 
         Player player;
+        GoodEnemies[] enemiesGood = new GoodEnemies[10];
+        BadEnemies[] enemiesBad = new BadEnemies[10];
+
         Texture2D grndTexture;
         Texture2D NormalPlatformA;
         Texture2D NormalPlatformB;
+        Texture2D GoodEnemyTextureA;
+        Texture2D GoodEnemyTextureB;
+        Texture2D BadEnemyTextureA;
+        Texture2D BadEnemyTextureB;
+        Texture2D temp;
+
         
 
         #endregion
@@ -91,6 +98,7 @@ namespace Chubz
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
             player = new Player(new Vector2(Levels.TileSize, 18*Levels.TileSize - 128));
             Levels.Initialize();
+            initilizeEnemies();
 
         }
 
@@ -116,6 +124,10 @@ namespace Chubz
             ScreenManager.Game.ResetElapsedTime();
 
             player.LoadContent(content.Load<Texture2D>("chubs spritesheet"));
+            GoodEnemyTextureA = content.Load<Texture2D>("chubs spritesheet");
+            GoodEnemyTextureB = content.Load<Texture2D>("chubs spritesheet");
+            BadEnemyTextureA = content.Load<Texture2D>("chubs spritesheet");
+            BadEnemyTextureB = content.Load<Texture2D>("chubs spritesheet");
             NormalPlatformA = content.Load<Texture2D>("platformA");
             NormalPlatformB = content.Load<Texture2D>("platformB");
             grndTexture = content.Load<Texture2D>("grndTexture");
@@ -147,21 +159,8 @@ namespace Chubz
 
             if (IsActive)
             {
-                // Apply some random jitter to make the enemy move around.
-                const float randomization = 10;
 
-                enemyPosition.X += (float)(random.NextDouble() - 0.5) * randomization;
-                enemyPosition.Y += (float)(random.NextDouble() - 0.5) * randomization;
-
-                // Apply a stabilizing force to stop the enemy moving off the screen.
-                Vector2 targetPosition = new Vector2(200, 200);
-
-                enemyPosition = Vector2.Lerp(enemyPosition, targetPosition, 0.05f);
-
-                // TODO: this game isn't very fun! You could probably improve
-                // it by inserting something more interesting in this space :-)
             }
-
             // If we are in a network game, check if we should return to the lobby.
             if ((networkSession != null) && !IsExiting)
             {
@@ -233,7 +232,99 @@ namespace Chubz
 
             return true;
         }
+        /// <summary>
+        /// Initializes the Enemies list to all blanks
+        /// </summary>
+        public void initilizeEnemies()
+        {
+            for (int i = 0; i < Enemies.Length; i++)
+            {
+                Enemies[i] = new Vector2(0, 0);
+            }
+        }
+        /// <summary>
+        /// Determines if enemies are alive
+        /// </summary>
+        public bool enemyIsAlive(Vector2 TestVector)// is alive?
+        {
+            for (int i = 0; i < enemiesBad.Length; i++)//check all enemies
+            {
+                if ((enemiesBad[i].OriginalVector == TestVector) && (enemiesBad[i].alive) ) //has same origin and is alive
+                {
+                    return true;
+                }
 
+            }
+            for (int i = 0; i < enemiesGood.Length; i++)//check all enemies
+            {
+                if ((enemiesGood[i].OriginalVector == TestVector) && (enemiesBad[i].alive)) //has same origin and is alive
+                {
+                    return true;
+                }
+
+            }
+            return false;// no living enemy found with same vector
+        }
+        /// <summary>
+        /// Updates Enemies aka creates or removes depending on situation.
+        /// </summary>
+        public void UpdateEnemy(Vector2 OriginalVector, bool type)
+        {
+            Vector2 TestVector = OriginalVector;// make test vector
+            // if is already monster check to kill or let live? if not create
+            if (!existingEnemy(TestVector))
+            {
+                for (int i = 0; i < Enemies.Length; i++)
+                {
+                    if (Enemies[i] == new Vector2(0, 0))//find first opening in list
+                    {
+                        Enemies[i] = TestVector; //create monster
+                        if (type)//if good enemy
+                        {
+
+                             enemiesGood[i] = new GoodEnemies(OriginalVector, temp); //create good enemy
+                        }
+                        else // if bad enemy
+                        {
+                            if (((random.NextDouble() - 0.5) * 10) % 0 == 0)// if random even number then A type else B type
+                            {
+                                temp = BadEnemyTextureA;
+                            }
+                            else
+                            {
+                                temp = BadEnemyTextureB;
+                            }
+                             enemiesBad[i] = new BadEnemies(OriginalVector, temp); //create bad enemy
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < Enemies.Length; i++) 
+                {
+                    if (Enemies[i] == TestVector)//find the monster in list
+                    {
+                        if (!enemyIsAlive(TestVector))// check if alive?
+                        {
+                            Enemies[i] = new Vector2(0, 0);// remove from list if not alive
+                        }
+                    }
+                }
+            }
+        }
+        public bool existingEnemy(Vector2 TestVector)
+        {
+            for (int i = 0; i < Enemies.Length; i++)
+            {
+                if (Enemies[i] == TestVector)
+                {
+                    return true;
+                }
+            }
+            return false;
+            
+        }
 
         /// <summary>
         /// Draws the gameplay screen.
@@ -259,19 +350,26 @@ namespace Chubz
                     tilePos += playerPos;
 
 
-                    if ((Levels.level_1[i, j] == 1))
+                    if ((Levels.level_1[i, j] == 1))//detecting walls
                     {
-                        spriteBatch.Draw(grndTexture, tilePos, Color.White);
+                        spriteBatch.Draw(grndTexture, tilePos, Color.White); 
                     }
-                    if ((Levels.level_1[i, j] == 2))
+                    if ((Levels.level_1[i, j] == 2))//detecting immobile plats
                     {
-                        spriteBatch.Draw(NormalPlatformA, tilePos, Color.White);
+                        spriteBatch.Draw(NormalPlatformA, tilePos, Color.White); 
                     }
-                    if ((Levels.level_1[i, j] == 3))
+                    if ((Levels.level_1[i, j] == 3))//detecting moving plats
                     {
-                        spriteBatch.Draw(NormalPlatformB, tilePos, Color.White);
+                        spriteBatch.Draw(NormalPlatformB, tilePos, Color.White); 
                     }
-
+                    if ((Levels.level_1[i, j] == 4))//detecting GoodEnemies
+                    {
+                        UpdateEnemy(new Vector2(i,j), true);
+                    }
+                    if ((Levels.level_1[i, j] == 5))//detecting BadEnemies
+                    {
+                        UpdateEnemy(new Vector2(i, j), false);
+                    }
                 }
             }
             player.Draw(spriteBatch);      
