@@ -89,7 +89,7 @@ namespace Chubz
 
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
-            player = new Player(new Vector2(32, 18*32 - 122));
+            player = new Player(new Vector2(Levels.TileSize, 18*Levels.TileSize - 128));
             Levels.Initialize();
 
         }
@@ -253,7 +253,7 @@ namespace Chubz
             {
                 for (int j = 0; j < Levels.level_1.GetLength(1); j++)
                 {
-                    Vector2 tilePos = new Vector2(j * 32, i * 32);
+                    Vector2 tilePos = new Vector2(j * Levels.TileSize, i * Levels.TileSize);
                     Vector2 playerPos = player.ScreenPosition - player.MapPosition;
 
                     tilePos += playerPos;
