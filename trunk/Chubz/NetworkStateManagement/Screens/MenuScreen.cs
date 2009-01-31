@@ -64,12 +64,9 @@ namespace Chubz
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
-            audioEngine = new AudioEngine("test.xgs");
-
-      
-            waveBank = new WaveBank(audioEngine, "Wave Bank.xwb");
-
-            soundBank = new SoundBank(audioEngine, "Sound Bank.xsb");
+            audioEngine = new AudioEngine("Content\\Audio\\Chubz Audio.xgs");
+            waveBank = new WaveBank(audioEngine, "Content\\Audio\\Wave Bank.xwb");
+            soundBank = new SoundBank(audioEngine, "Content\\Audio\\Sound Bank.xsb");
            
 
 
