@@ -25,3 +25,30 @@ C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\obj\x86\Debug
 C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Sound Bank.xsb
 C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\bin\x86\Debug\test.xgs
 C:\Users\Yoo Shin Kim\Downloads\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Wave Bank.xwb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Sound Bank.xsb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\test.xgs
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Wave Bank.xwb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gamefont.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\menufont.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\background.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\blank.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\gradient.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\cat.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_able.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_mute.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_ready.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chat_talking.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\chubs spritesheet.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\grndTexture.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformA.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\platformB.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Player.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\Content\FoodSpriteSheet.xnb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\NetworkStateManagement.exe
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\bin\x86\Debug\NetworkStateManagement.pdb
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\obj\x86\Debug\Chubz.Resources.resources
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\obj\x86\Debug\NetworkStateManagementWindows.csproj.GenerateResource.Cache
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\obj\x86\Debug\NetworkStateManagement.exe
+C:\Users\Yoo Shin Kim\Desktop\game2\Chubz\NetworkStateManagement\obj\x86\Debug\NetworkStateManagement.pdb
