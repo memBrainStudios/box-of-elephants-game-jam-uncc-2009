@@ -130,12 +130,15 @@ namespace Chubz
                 {
                     Velocity.X = -(8 - 2 * Size);
 
-                    if (Size == 1 && !sprite.CurrentAnimation.Equals("light left"))
-                        sprite.CurrentAnimation = "light left";
-                    else if (Size == 2 && !sprite.CurrentAnimation.Equals("medium left"))
-                        sprite.CurrentAnimation = "medium left";
-                    else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy left"))
-                        sprite.CurrentAnimation = "heavy left";
+                    if (!sprite.CurrentAnimation.Contains("eat"))
+                    {
+                        if (Size == 1 && !sprite.CurrentAnimation.Equals("light left"))
+                            sprite.CurrentAnimation = "light left";
+                        else if (Size == 2 && !sprite.CurrentAnimation.Equals("medium left"))
+                            sprite.CurrentAnimation = "medium left";
+                        else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy left"))
+                            sprite.CurrentAnimation = "heavy left";
+                    }
 
                     sprite.StartAnimation();
                     keyPressed = true;
@@ -144,12 +147,15 @@ namespace Chubz
                 {
                     Velocity.X = 8 - 2 * Size;
 
-                    if (Size == 1 && !sprite.CurrentAnimation.Equals("light right"))
-                        sprite.CurrentAnimation = "light right";
-                    else if (Size == 2 && !sprite.CurrentAnimation.Equals("medium right"))
-                        sprite.CurrentAnimation = "medium right";
-                    else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy right"))
-                        sprite.CurrentAnimation = "heavy right";
+                    if (!sprite.CurrentAnimation.Contains("eat"))
+                    {
+                        if (Size == 1 && !sprite.CurrentAnimation.Equals("light right"))
+                            sprite.CurrentAnimation = "light right";
+                        else if (Size == 2 && !sprite.CurrentAnimation.Equals("medium right"))
+                            sprite.CurrentAnimation = "medium right";
+                        else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy right"))
+                            sprite.CurrentAnimation = "heavy right";
+                    }
 
                     sprite.StartAnimation();
                     keyPressed = true;
@@ -159,26 +165,29 @@ namespace Chubz
                 {
                     Velocity.Y = -(12 - 1.5f * Size);
 
-                    if (Size == 1)
+                    if (!sprite.CurrentAnimation.Contains("eat"))
                     {
-                        if (sprite.CurrentAnimation.Equals("light right"))
-                            sprite.CurrentAnimation = "light right fall";
-                        else
-                            sprite.CurrentAnimation = "light left fall";
-                    }
-                    else if (Size == 2)
-                    {
-                        if (sprite.CurrentAnimation.Equals("medium right"))
-                            sprite.CurrentAnimation = "medium right fall";
-                        else
-                            sprite.CurrentAnimation = "medium left fall";
-                    }
-                    else if (Size == 3)
-                    {
-                        if (sprite.CurrentAnimation.Equals("heavy right"))
-                            sprite.CurrentAnimation = "heavy right fall";
-                        else
-                            sprite.CurrentAnimation = "heavy left fall";
+                        if (Size == 1)
+                        {
+                            if (sprite.CurrentAnimation.Equals("light right"))
+                                sprite.CurrentAnimation = "light right fall";
+                            else
+                                sprite.CurrentAnimation = "light left fall";
+                        }
+                        else if (Size == 2)
+                        {
+                            if (sprite.CurrentAnimation.Equals("medium right"))
+                                sprite.CurrentAnimation = "medium right fall";
+                            else
+                                sprite.CurrentAnimation = "medium left fall";
+                        }
+                        else if (Size == 3)
+                        {
+                            if (sprite.CurrentAnimation.Equals("heavy right"))
+                                sprite.CurrentAnimation = "heavy right fall";
+                            else
+                                sprite.CurrentAnimation = "heavy left fall";
+                        }
                     }
 
                     sprite.StartAnimation();
