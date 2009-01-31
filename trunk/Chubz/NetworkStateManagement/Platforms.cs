@@ -21,6 +21,9 @@ namespace Chubz
         int tolerance;
         public bool Active = true;
 
+        float fallTimer = 0f;
+        float fallTime = 1f;
+
         public Platforms(Vector2 partial, Texture2D tex, int weight)
         {
             OriginalVector = partial;
@@ -30,7 +33,7 @@ namespace Chubz
             tolerance = weight;
         }
 
-        public void Update(Player player)
+        public void Update(GameTime gameTime, Player player)
         {
             Rectangle boundingBox, playerBoundingBox;
 
@@ -39,6 +42,15 @@ namespace Chubz
             playerBoundingBox = new Rectangle((int)player.MapPosition.X, (int)player.MapPosition.Y, 127, 127);
 
             if (Velocity.Y == 0f && player.Weight > tolerance && boundingBox.Intersects(playerBoundingBox))
+            {
+                fallTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            else
+            {
+                fallTimer = 0f;
+            }
+
+            if (fallTimer >= fallTime)
             {
                 Velocity.Y = 0.25f;
 
@@ -58,7 +70,14 @@ namespace Chubz
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 screenOffset)
         {
-            spriteBatch.Draw(texture, MapPosition + screenOffset, Color.White);
+            Color fade;
+
+            if (fallTimer == 0f)
+                fade = new Color(255, 255, 255);
+            else
+                fade = new Color(160, 160, 160);
+
+            spriteBatch.Draw(texture, MapPosition + screenOffset, fade);
         }
     }
 }
