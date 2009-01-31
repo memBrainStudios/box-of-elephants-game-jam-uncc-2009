@@ -29,7 +29,7 @@ namespace Chubz
     class GameplayScreen : GameScreen
     {
         #region Fields
-        Vector2[] Enemies = new Vector2[20];
+        Vector2[] Enemies = new Vector2[40];
         NetworkSession networkSession;
         ContentManager content;
         SpriteFont gameFont;
@@ -44,6 +44,7 @@ namespace Chubz
         Texture2D NormalPlatformA;
         Texture2D NormalPlatformB;
         Texture2D enemiesTexture;
+        Texture2D goalTexture;
 
         #endregion
 
@@ -121,7 +122,7 @@ namespace Chubz
             NormalPlatformA = content.Load<Texture2D>("platformA");
             NormalPlatformB = content.Load<Texture2D>("platformB");
             grndTexture = content.Load<Texture2D>("grndTexture");
-
+            goalTexture = content.Load<Texture2D>("gradient");
             enemiesTexture = content.Load<Texture2D>("FoodSpriteSheet");
         }
 
@@ -404,6 +405,11 @@ namespace Chubz
                             if (enemiesBad[a] != null && enemiesBad[a].OriginalVector.Equals(enemyPosition))
                                 enemiesBad[a].Draw(spriteBatch, playerPos);
                         }
+                    }
+                    if (Levels.level_1[i, j] == 9)
+                    {
+                        spriteBatch.Draw(goalTexture,
+                            new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), Color.White);
                     }
 
                 }
