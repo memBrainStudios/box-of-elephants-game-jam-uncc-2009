@@ -26,6 +26,9 @@ namespace Chubz
         float eatTimer = 0f;
         float eatTime = 0.5f;
 
+        public bool Win = false;
+        public bool Lose = false;
+
         public Player(Vector2 partial)
         {
             MapPosition = partial;
@@ -121,10 +124,11 @@ namespace Chubz
             bool keyPressed = false;
 
             //on solid platform
-            if ((Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] > 0 &&
+            if ((MapPosition.Y + 128) / Levels.TileSize >= Levels.Height ||
+                ((Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] > 0 &&
                 Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] < 4) ||
                 (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] > 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] < 4))
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] < 4)))
             {
                 if (ks.IsKeyDown(Keys.Left))
                 {
@@ -256,6 +260,12 @@ namespace Chubz
 
             MapPosition.Y += Velocity.Y;
 
+            if (MapPosition.Y + 128 > Levels.Height * Levels.TileSize)
+            {
+                Lose = true;
+                return;
+            }  
+
             boundingBox = new Rectangle(
                 (int)MapPosition.X, (int)MapPosition.Y,
                 127, 127
@@ -289,10 +299,11 @@ namespace Chubz
 
             //just landed on a platform
             if (sprite.CurrentAnimation.Contains("fall") &&
+                ((MapPosition.Y + 128) / Levels.TileSize >= Levels.Height ||
                 ((Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] > 0 &&
                 Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] < 4) ||
                 (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] > 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] < 4)))
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] < 4))))
             {
                 sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 5);
                 sprite.StopAnimation();

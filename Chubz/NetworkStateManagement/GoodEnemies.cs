@@ -116,13 +116,20 @@ namespace Chubz
             }
 
             //gravity
-            if (Levels.level_1[(int)((MapPosition.Y + 64) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] == 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 64) / Levels.TileSize), (int)((MapPosition.X + 63) / Levels.TileSize)] == 0)
+            if ((MapPosition.Y + 64) / Levels.TileSize >= Levels.Height ||
+                (Levels.level_1[(int)((MapPosition.Y + 64) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] == 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 64) / Levels.TileSize), (int)((MapPosition.X + 63) / Levels.TileSize)] == 0))
             {
                 Velocity.Y += 0.25f;
             }
 
             MapPosition.Y += Velocity.Y;
+
+            if (MapPosition.Y + 64 > Levels.Height * Levels.TileSize)
+            {
+                alive = false;
+                return;
+            }  
 
             boundingBox = new Rectangle(
                 (int)MapPosition.X, (int)MapPosition.Y,
@@ -168,7 +175,7 @@ namespace Chubz
 
             if (boundingBox.Intersects(playerBoundingBox))
             {
-                player.Weight -= 5;
+                player.Weight -= 2;
                 alive = false;
 
                 string prevAnimation = player.sprite.CurrentAnimation;
