@@ -77,6 +77,25 @@ namespace Chubz
             sprite.Update(gameTime);
 
             CollisionDetection();
+
+            if (Size != 1 && Weight < 250f)
+            {
+                Size = 1;
+                int firstSpace = sprite.CurrentAnimation.IndexOf(' ');
+                sprite.CurrentAnimation = "light" + sprite.CurrentAnimation.Substring(firstSpace);
+            }
+            else if (Size != 2 && Weight >= 250f && Weight <= 350f)
+            {
+                Size = 2;
+                int firstSpace = sprite.CurrentAnimation.IndexOf(' ');
+                sprite.CurrentAnimation = "medium" + sprite.CurrentAnimation.Substring(firstSpace);
+            }
+            else if (Size != 3 && Weight > 350f)
+            {
+                Size = 3;
+                int firstSpace = sprite.CurrentAnimation.IndexOf(' ');
+                sprite.CurrentAnimation = "heavy" + sprite.CurrentAnimation.Substring(firstSpace);
+            }
         }
 
         public void HandleInput(InputState input)
@@ -156,14 +175,6 @@ namespace Chubz
                     sprite.Animations[sprite.CurrentAnimation].Reset();
                     sprite.StopAnimation();
                 }
-            }
-
-            //change chub's size (just for testing)
-            if (input.IsNewKeyPress(Keys.Enter, null, out playerIndex))
-            {
-                Size++;
-                if (Size > 3)
-                    Size = 1;
             }
         }
 

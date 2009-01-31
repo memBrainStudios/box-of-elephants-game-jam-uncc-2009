@@ -168,13 +168,13 @@ namespace Chubz
             for (int i = 0; i < enemiesBad.Length; i++)
             {
                 if (enemiesBad[i] != null)
-                    enemiesBad[i].Update(gameTime, player.MapPosition);
+                    enemiesBad[i].Update(gameTime, player);
             }
 
             for (int i = 0; i < enemiesGood.Length; i++)
             {
                 if (enemiesGood[i] != null)
-                    enemiesGood[i].Update(gameTime, player.MapPosition);
+                    enemiesGood[i].Update(gameTime, player);
             }
 
             // If we are in a network game, check if we should return to the lobby.
