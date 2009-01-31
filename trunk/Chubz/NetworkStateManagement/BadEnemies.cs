@@ -25,7 +25,7 @@ namespace Chubz
             MapPosition = OriginalVector;
             alive = true;
             MapPosition.X = MapPosition.X * 32;
-            MapPosition.Y = MapPosition.X * 32;
+            MapPosition.Y = MapPosition.Y * 32;
 
             texture = temp;
         }
@@ -42,9 +42,9 @@ namespace Chubz
         {
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            spriteBatch.Draw(texture, MapPosition, Color.White);
+            spriteBatch.Draw(texture, position, Color.White);
         }
     }
 
