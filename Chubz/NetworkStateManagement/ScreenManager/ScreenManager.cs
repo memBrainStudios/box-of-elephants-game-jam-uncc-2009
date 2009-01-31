@@ -28,6 +28,7 @@ namespace Chubz
     {
         #region Fields
 
+        GameAudio gameAudio;
         List<GameScreen> screens = new List<GameScreen>();
         List<GameScreen> screensToUpdate = new List<GameScreen>();
 
@@ -76,7 +77,13 @@ namespace Chubz
             get { return traceEnabled; }
             set { traceEnabled = value; }
         }
-
+        /// <summary>
+        /// Gets the GameAudio Audio state
+        /// </summary>
+        public GameAudio Audio
+        {
+            get { return gameAudio; }
+        }
 
         #endregion
 
@@ -110,6 +117,11 @@ namespace Chubz
         {
             // Load content belonging to the screen manager.
             ContentManager content = Game.Content;
+            //Creates new GameAudio
+            gameAudio = new GameAudio();
+            //Adds Game Audio Theme Music and Background Music
+            gameAudio.AddSound("BackMusic_vol2");
+            gameAudio.PlaySound("BackMusic_vol2");
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = content.Load<SpriteFont>("menufont");
@@ -146,6 +158,7 @@ namespace Chubz
         /// </summary>
         public override void Update(GameTime gameTime)
         {
+            gameAudio.UpdateAudio();
             // Read the keyboard and gamepad.
             input.Update();
 

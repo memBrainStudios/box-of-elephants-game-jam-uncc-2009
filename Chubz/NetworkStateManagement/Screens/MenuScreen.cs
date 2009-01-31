@@ -28,12 +28,6 @@ namespace Chubz
         List<MenuEntry> menuEntries = new List<MenuEntry>();
         int selectedEntry = 0;
         string menuTitle;
-
-        private AudioEngine audioEngine; 
-        private WaveBank waveBank;   
-        private SoundBank soundBank;
-        public Cue sound1 = null;
-
         #endregion
 
         #region Properties
@@ -63,15 +57,6 @@ namespace Chubz
 
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
-
-            audioEngine = new AudioEngine("Content\\Audio\\Chubz Audio.xgs");
-            waveBank = new WaveBank(audioEngine, "Content\\Audio\\Wave Bank.xwb");
-            soundBank = new SoundBank(audioEngine, "Content\\Audio\\Sound Bank.xsb");
-           
-
-
-            sound1 = soundBank.GetCue("BackMusei_vol3");
-            sound1.Play();
         }
 
 
@@ -114,7 +99,6 @@ namespace Chubz
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
             {
                 OnSelectEntry(selectedEntry, playerIndex);
-                sound1.Pause();
             }
             else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
             {
