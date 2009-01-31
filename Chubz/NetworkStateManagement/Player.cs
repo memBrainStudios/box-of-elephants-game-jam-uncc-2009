@@ -17,11 +17,14 @@ namespace Chubz
         public Vector2 ScreenPosition;
         public Vector2 Velocity = Vector2.Zero;
 
-        AnimatingSprite sprite;
+        public AnimatingSprite sprite;
 
         public int Weight = 300;
         //1 = light, 2 = medium, 3 = heavy
         public int Size = 2;
+
+        float eatTimer = 0f;
+        float eatTime = 0.5f;
 
         public Player(Vector2 partial)
         {
@@ -78,6 +81,7 @@ namespace Chubz
 
             CollisionDetection();
 
+            //change size
             if (Size != 1 && Weight < 250f)
             {
                 Size = 1;
@@ -95,6 +99,18 @@ namespace Chubz
                 Size = 3;
                 int firstSpace = sprite.CurrentAnimation.IndexOf(' ');
                 sprite.CurrentAnimation = "heavy" + sprite.CurrentAnimation.Substring(firstSpace);
+            }
+
+            if (sprite.CurrentAnimation.Contains("eat"))
+            {
+                eatTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (eatTimer >= eatTime)
+                {
+                    sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 4);
+                    sprite.Animations[sprite.CurrentAnimation].Reset();
+                    eatTimer = 0f;
+                }
             }
         }
 
