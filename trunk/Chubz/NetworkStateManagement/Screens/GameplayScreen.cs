@@ -29,7 +29,7 @@ namespace Chubz
     class GameplayScreen : GameScreen
     {
         #region Fields
-        Vector2[] Enemies = new Vector2[10];
+        Vector2[] Enemies = new Vector2[20];
         NetworkSession networkSession;
         ContentManager content;
         SpriteFont gameFont;
@@ -37,8 +37,8 @@ namespace Chubz
         Random random = new Random();
 
         Player player;
-        GoodEnemies[] enemiesGood = new GoodEnemies[10];
-        BadEnemies[] enemiesBad = new BadEnemies[10];
+        GoodEnemies[] enemiesGood = new GoodEnemies[20];
+        BadEnemies[] enemiesBad = new BadEnemies[20];
 
         Texture2D grndTexture;
         Texture2D NormalPlatformA;
