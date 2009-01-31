@@ -82,6 +82,12 @@ namespace Chubz
         {
             sprite.Update(gameTime);
 
+            if (Weight > 600)
+            {
+                Lose = true;
+                return;
+            }
+
             CollisionDetection();
 
             //change size
@@ -230,6 +236,11 @@ namespace Chubz
                 {
                     for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
                     {
+                        if (Levels.level_1[y, x] == 9)
+                        {
+                            Win = true;
+                            return;
+                        }
                         if (y >= Levels.Height || x >= Levels.Width ||
                             (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 4))
                         {
