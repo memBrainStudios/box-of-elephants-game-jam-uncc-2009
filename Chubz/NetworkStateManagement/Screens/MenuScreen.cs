@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 #endregion
 
 namespace Chubz
@@ -27,6 +28,11 @@ namespace Chubz
         List<MenuEntry> menuEntries = new List<MenuEntry>();
         int selectedEntry = 0;
         string menuTitle;
+
+        private AudioEngine audioEngine; 
+        private WaveBank waveBank;   
+        private SoundBank soundBank;
+        public Cue sound1 = null;
 
         #endregion
 
@@ -57,6 +63,18 @@ namespace Chubz
 
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
+
+            audioEngine = new AudioEngine("test.xgs");
+
+      
+            waveBank = new WaveBank(audioEngine, "Wave Bank.xwb");
+
+            soundBank = new SoundBank(audioEngine, "Sound Bank.xsb");
+           
+
+
+            sound1 = soundBank.GetCue("BackMusei_vol3");
+            sound1.Play();
         }
 
 
@@ -99,6 +117,7 @@ namespace Chubz
             if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
             {
                 OnSelectEntry(selectedEntry, playerIndex);
+                sound1.Pause();
             }
             else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
             {
