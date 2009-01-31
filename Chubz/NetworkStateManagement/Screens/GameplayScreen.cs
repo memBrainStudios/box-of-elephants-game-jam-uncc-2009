@@ -423,7 +423,6 @@ namespace Chubz
                     }
                     if ((Levels.level_1[i, j] == 3))//detecting moving plats
                     {
-<<<<<<< .mine
                         Vector2 platformPosition = new Vector2(j, i);
 
                         for (int a = 0; a < platforms.Length; a++)
@@ -431,10 +430,8 @@ namespace Chubz
                             if (platforms[a] != null && platforms[a].Active && platforms[a].OriginalVector.Equals(platformPosition))
                                 platforms[a].Draw(spriteBatch, playerPos);
                         }
-=======
                         //spriteBatch.Draw(NormalPlatformB, tilePos, Color.White);
                         spriteBatch.Draw(NormalPlatformB, new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
->>>>>>> .r75
                     }
 
                     if (Levels.level_1[i, j] == 9)
