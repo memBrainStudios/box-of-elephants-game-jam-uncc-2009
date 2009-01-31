@@ -225,6 +225,12 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 0;
+    PC Bank Last Modified High = 0;
+    Header Last Modified Low = 0;
+    Header Last Modified High = 0;
     Bank Last Revised Low = 1780929162;
     Bank Last Revised High = 29983703;
 
@@ -883,7 +889,7 @@ Sound Bank
 
     Sound
     {
-        Name = Backmusic_vol2;
+        Name = BackMusic_vol2;
         Volume = -1200;
         Pitch = 0;
         Priority = 0;
@@ -975,7 +981,7 @@ Sound Bank
 
     Sound
     {
-        Name = BackMusei_vol3;
+        Name = BackMusic_vol3;
         Volume = -1200;
         Pitch = 0;
         Priority = 0;
@@ -1345,7 +1351,7 @@ Sound Bank
 
     Cue
     {
-        Name = Backmusic_vol2;
+        Name = BackMusic_vol2;
 
         Variation
         {
@@ -1356,7 +1362,7 @@ Sound Bank
 
         Sound Entry
         {
-            Name = Backmusic_vol2;
+            Name = BackMusic_vol2;
             Index = 7;
             Weight Min = 0;
             Weight Max = 255;
@@ -1385,7 +1391,7 @@ Sound Bank
 
     Cue
     {
-        Name = BackMusei_vol3;
+        Name = BackMusic_vol3;
 
         Variation
         {
@@ -1396,7 +1402,7 @@ Sound Bank
 
         Sound Entry
         {
-            Name = BackMusei_vol3;
+            Name = BackMusic_vol3;
             Index = 9;
             Weight Min = 0;
             Weight Max = 255;
