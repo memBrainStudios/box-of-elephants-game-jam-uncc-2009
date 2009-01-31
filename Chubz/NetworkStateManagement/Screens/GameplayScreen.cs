@@ -223,7 +223,7 @@ namespace Chubz
             for (int i = 0; i < platforms.Length; i++)
             {
                 if (platforms[i] != null && platforms[i].Active)
-                    platforms[i].Update(player);
+                    platforms[i].Update(gameTime, player);
             }
 
             // If we are in a network game, check if we should return to the lobby.
@@ -423,15 +423,7 @@ namespace Chubz
                     }
                     if ((Levels.level_1[i, j] == 3))//detecting moving plats
                     {
-                        Vector2 platformPosition = new Vector2(j, i);
-
-                        for (int a = 0; a < platforms.Length; a++)
-                        {
-                            if (platforms[a] != null && platforms[a].Active && platforms[a].OriginalVector.Equals(platformPosition))
-                                platforms[a].Draw(spriteBatch, playerPos);
-                        }
-                        //spriteBatch.Draw(NormalPlatformB, tilePos, Color.White);
-                        spriteBatch.Draw(NormalPlatformB, new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+                                                //spriteBatch.Draw(NormalPlatformB, new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
                     }
 
                     if (Levels.level_1[i, j] == 9)
@@ -461,8 +453,12 @@ namespace Chubz
                                 enemiesBad[a].Draw(spriteBatch, playerPos);
                         }
                     }
-                    
 
+                    for (int a = 0; a < platforms.Length; a++)
+                    {
+                        if (platforms[a] != null && platforms[a].Active)
+                            platforms[a].Draw(spriteBatch, playerPos);
+                    }
                 }
             }
 
