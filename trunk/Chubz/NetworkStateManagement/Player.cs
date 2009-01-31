@@ -54,12 +54,19 @@ namespace Chubz
             sprite.Animations.Add("medium left", mediumLeft);
             sprite.Animations.Add("heavy right", heavyRight);
             sprite.Animations.Add("heavy left", heavyLeft);
-            sprite.Animations.Add("light eat", new Animation(128, 128, 1, 0, 384));
-            sprite.Animations.Add("medium eat", new Animation(128, 128, 1, 128, 384));
-            sprite.Animations.Add("heavy eat", new Animation(128, 128, 1, 256, 384));
-            sprite.Animations.Add("light fall", new Animation(128, 128, 1, 384, 384));
-            sprite.Animations.Add("medium fall", new Animation(128, 128, 1, 512, 384));
-            sprite.Animations.Add("heavy fall", new Animation(128, 128, 1, 640, 384));
+            sprite.Animations.Add("light right eat", new Animation(128, 128, 1, 0, 384));
+            sprite.Animations.Add("medium right eat", new Animation(128, 128, 1, 128, 384));
+            sprite.Animations.Add("heavy right eat", new Animation(128, 128, 1, 256, 384));
+            sprite.Animations.Add("light right fall", new Animation(128, 128, 1, 384, 384));
+            sprite.Animations.Add("medium right fall", new Animation(128, 128, 1, 512, 384));
+            sprite.Animations.Add("heavy right fall", new Animation(128, 128, 1, 640, 384));
+            sprite.Animations.Add("light left eat", new Animation(128, 128, 1, 0, 512));
+            sprite.Animations.Add("medium left eat", new Animation(128, 128, 1, 128, 512));
+            sprite.Animations.Add("heavy left eat", new Animation(128, 128, 1, 256, 512));
+            sprite.Animations.Add("light left fall", new Animation(128, 128, 1, 384, 512));
+            sprite.Animations.Add("medium left fall", new Animation(128, 128, 1, 512, 512));
+            sprite.Animations.Add("heavy left fall", new Animation(128, 128, 1, 640, 512));
+            
 
             sprite.CurrentAnimation = "medium right";
             sprite.StopAnimation();
@@ -81,38 +88,46 @@ namespace Chubz
             KeyboardState ks = input.CurrentKeyboardStates[0];
             PlayerIndex playerIndex;
 
-            if (ks.IsKeyDown(Keys.Left))
+            //on ground
+            if (MapPosition.Y == 500)
             {
-                Velocity.X = -(8 - 2 * Size);
+                if (ks.IsKeyDown(Keys.Left))
+                {
+                    Velocity.X = -(8 - 2 * Size);
 
-                if (Size == 1 && !sprite.CurrentAnimation.Equals("light left"))
-                    sprite.CurrentAnimation = "light left";
-                else if (Size == 2 && !sprite.CurrentAnimation.Equals("medium left"))
-                    sprite.CurrentAnimation = "medium left";
-                else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy left"))
-                    sprite.CurrentAnimation = "heavy left";
+                    if (Size == 1 && !sprite.CurrentAnimation.Equals("light left"))
+                        sprite.CurrentAnimation = "light left";
+                    else if (Size == 2 && !sprite.CurrentAnimation.Equals("medium left"))
+                        sprite.CurrentAnimation = "medium left";
+                    else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy left"))
+                        sprite.CurrentAnimation = "heavy left";
 
-                MapPosition += Velocity;
-                sprite.StartAnimation();
-            }
-            else if (ks.IsKeyDown(Keys.Right))
-            {
-                Velocity.X = 8 - 2 * Size;
+                    MapPosition += Velocity;
+                    sprite.StartAnimation();
+                }
+                else if (ks.IsKeyDown(Keys.Right))
+                {
+                    Velocity.X = 8 - 2 * Size;
 
-                if (Size == 1 && !sprite.CurrentAnimation.Equals("light right"))
-                    sprite.CurrentAnimation = "light right";
-                else if (Size == 2 && !sprite.CurrentAnimation.Equals("medium right"))
-                    sprite.CurrentAnimation = "medium right";
-                else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy right"))
-                    sprite.CurrentAnimation = "heavy right";
+                    if (Size == 1 && !sprite.CurrentAnimation.Equals("light right"))
+                        sprite.CurrentAnimation = "light right";
+                    else if (Size == 2 && !sprite.CurrentAnimation.Equals("medium right"))
+                        sprite.CurrentAnimation = "medium right";
+                    else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy right"))
+                        sprite.CurrentAnimation = "heavy right";
 
-                MapPosition += Velocity;
-                sprite.StartAnimation();
-            }
-            else
-            {
-                sprite.Animations[sprite.CurrentAnimation].Reset();
-                sprite.StopAnimation();
+                    MapPosition += Velocity;
+                    sprite.StartAnimation();
+                }
+                else if (input.IsNewKeyPress(Keys.Space, null, out playerIndex))
+                {
+
+                }
+                else
+                {
+                    sprite.Animations[sprite.CurrentAnimation].Reset();
+                    sprite.StopAnimation();
+                }
             }
 
             //change chub's size (just for testing)
