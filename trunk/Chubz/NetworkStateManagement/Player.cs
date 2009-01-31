@@ -36,13 +36,13 @@ namespace Chubz
 
             //add animations
             Animation lightRight = new Animation(512, 128, 4, 0, 0);
-            lightRight.FramesPerSecond = 4;
+            lightRight.FramesPerSecond = 6;
             Animation lightLeft = new Animation(512, 128, 4, 512, 0);
-            lightLeft.FramesPerSecond = 4;
+            lightLeft.FramesPerSecond = 6;
             Animation mediumRight = new Animation(512, 128, 4, 0, 128);
-            mediumRight.FramesPerSecond = 4;
+            mediumRight.FramesPerSecond = 5;
             Animation mediumLeft = new Animation(512, 128, 4, 512, 128);
-            mediumLeft.FramesPerSecond = 4;
+            mediumLeft.FramesPerSecond = 5;
             Animation heavyRight = new Animation(512, 128, 4, 0, 256);
             heavyRight.FramesPerSecond = 4;
             Animation heavyLeft = new Animation(512, 128, 4, 512, 256);
@@ -74,7 +74,7 @@ namespace Chubz
 
             if (ks.IsKeyDown(Keys.Left))
             {
-                MapPosition.X -= 2;
+                MapPosition.X -= 8 - 2 * Size;
 
                 if (Size == 1 && !sprite.CurrentAnimation.Equals("light left"))
                     sprite.CurrentAnimation = "light left";
@@ -87,7 +87,7 @@ namespace Chubz
             }
             else if (ks.IsKeyDown(Keys.Right))
             {
-                MapPosition.X += 2;
+                MapPosition.X += 8 - 2 * Size;
 
                 if (Size == 1 && !sprite.CurrentAnimation.Equals("light right"))
                     sprite.CurrentAnimation = "light right";
