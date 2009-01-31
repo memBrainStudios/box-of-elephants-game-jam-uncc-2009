@@ -16,17 +16,28 @@ namespace Chubz
         public bool alive = false;
         public Vector2 MapPosition = new Vector2(0, 0);
         public Vector2 OriginalVector = new Vector2(0, 0);
-        Texture2D texture;
+
+        AnimatingSprite sprite;
 
 
-        public GoodEnemies(Vector2 locationVector, Texture2D temp)
+        public GoodEnemies(Vector2 locationVector, Texture2D temp, int type)
         {
             OriginalVector = locationVector;
             MapPosition = OriginalVector;
             alive = true;
             MapPosition.X = MapPosition.X * 32;
             MapPosition.Y = MapPosition.Y * 32;
-            texture = temp;
+
+            sprite = new AnimatingSprite();
+            sprite.Texture = temp;
+
+            Animation right = new Animation(512, 128, 4, 0, 128 * type);
+            right.FramesPerSecond = 4;
+            Animation left = new Animation(512, 128, 4, 512, 128 * type);
+            left.FramesPerSecond = 4;
+            sprite.Animations.Add("right", right);
+            sprite.Animations.Add("left", left);
+            sprite.CurrentAnimation = "left";
         }
 
         public void LoadContent(Texture2D t)
@@ -35,6 +46,7 @@ namespace Chubz
 
         public void Update(GameTime gameTime)
         {
+            sprite.Update(gameTime);
         }
 
         public void HandleInput(InputState input)
@@ -43,7 +55,8 @@ namespace Chubz
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            sprite.Position = position;
+            sprite.Draw(spriteBatch, 0.5f);
         }
     }
 
