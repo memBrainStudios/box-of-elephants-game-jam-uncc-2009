@@ -8,19 +8,18 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Net;
 
+
+//This is not used ATM soon to allow moving Platforms.
 namespace Chubz
 {
-
-    class Player
+    class Platforms
     {
         public Vector2 MapPosition;
-        public Vector2 ScreenPosition;
         private Texture2D texture;
 
-        public Player(Vector2 partial)
+        public Platforms(Vector2 partial)
         {
             MapPosition = partial;
-            ScreenPosition = new Vector2(400, 300);
         }
 
         public void LoadContent(Texture2D t)
@@ -30,15 +29,14 @@ namespace Chubz
 
         public void Update()
         {
-
-            // Player Movement Code here!
-            //movement code modifies the MapPosition  allowing scrolling action
+ 
+            // Platform Movement Code here!
 
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, ScreenPosition, Color.White);
+            spriteBatch.Draw(texture, MapPosition, Color.White);
+
         }
     }
-    
 }
