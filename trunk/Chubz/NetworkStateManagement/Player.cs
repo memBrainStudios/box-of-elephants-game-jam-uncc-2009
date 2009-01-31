@@ -13,6 +13,7 @@ namespace Chubz
 
     class Player
     {
+        GameAudio gameAudio;
         public Vector2 MapPosition;
         public Vector2 ScreenPosition;
         public Vector2 Velocity = Vector2.Zero;
@@ -33,6 +34,12 @@ namespace Chubz
         {
             MapPosition = partial;
             ScreenPosition = new Vector2(336, 236);
+            
+            //Create new AudioEngine add explosion sound
+            gameAudio = new GameAudio();
+            gameAudio.AddSound("jump light");
+            gameAudio.AddSound("jump medium");
+            gameAudio.AddSound("jump fat");
         }
 
         public void LoadContent(Texture2D t)
@@ -81,6 +88,7 @@ namespace Chubz
         public void Update(GameTime gameTime)
         {
             sprite.Update(gameTime);
+            gameAudio.UpdateAudio();
 
             if (Weight > 600)
             {
@@ -175,10 +183,17 @@ namespace Chubz
                 {
                     Velocity.Y = -(12 - 1.5f * Size);
 
+                    if(Size == 1)
+                        gameAudio.PlaySound("jump light");
+                    if (Size == 2)
+                        gameAudio.PlaySound("jump medium");
+                    if (Size == 3)
+                        gameAudio.PlaySound("jump fat");
                     if (!sprite.CurrentAnimation.Contains("eat"))
                     {
                         if (Size == 1)
                         {
+ 
                             if (sprite.CurrentAnimation.Equals("light right"))
                                 sprite.CurrentAnimation = "light right fall";
                             else
@@ -186,6 +201,7 @@ namespace Chubz
                         }
                         else if (Size == 2)
                         {
+
                             if (sprite.CurrentAnimation.Equals("medium right"))
                                 sprite.CurrentAnimation = "medium right fall";
                             else
@@ -193,6 +209,7 @@ namespace Chubz
                         }
                         else if (Size == 3)
                         {
+ 
                             if (sprite.CurrentAnimation.Equals("heavy right"))
                                 sprite.CurrentAnimation = "heavy right fall";
                             else
