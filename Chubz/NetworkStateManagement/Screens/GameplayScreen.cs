@@ -124,10 +124,10 @@ namespace Chubz
             ScreenManager.Game.ResetElapsedTime();
 
             player.LoadContent(content.Load<Texture2D>("chubs spritesheet"));
-            GoodEnemyTextureA = content.Load<Texture2D>("chubs spritesheet");
-            GoodEnemyTextureB = content.Load<Texture2D>("chubs spritesheet");
-            BadEnemyTextureA = content.Load<Texture2D>("chubs spritesheet");
-            BadEnemyTextureB = content.Load<Texture2D>("chubs spritesheet");
+            GoodEnemyTextureA = content.Load<Texture2D>("Player");
+            GoodEnemyTextureB = content.Load<Texture2D>("Player");
+            BadEnemyTextureA = content.Load<Texture2D>("Player");
+            BadEnemyTextureB = content.Load<Texture2D>("Player");
             NormalPlatformA = content.Load<Texture2D>("platformA");
             NormalPlatformB = content.Load<Texture2D>("platformB");
             grndTexture = content.Load<Texture2D>("grndTexture");
@@ -162,11 +162,11 @@ namespace Chubz
                     {
                         if ((Levels.level_1[i, j] == 4))//detecting GoodEnemies
                         {
-                            UpdateEnemy(new Vector2(i, j), true);
+                            UpdateEnemy(new Vector2(j, i), true);
                         }
                         if ((Levels.level_1[i, j] == 5))//detecting BadEnemies
                         {
-                            UpdateEnemy(new Vector2(i, j), false);
+                            UpdateEnemy(new Vector2(j, i), false);
                         }
 
                     }
@@ -259,7 +259,7 @@ namespace Chubz
         {
             for (int i = 0; i < enemiesBad.Length; i++)//check all enemies
             {
-                if ((enemiesBad[i]!= null)&& ((enemiesBad[i].OriginalVector == TestVector) && (enemiesBad[i].alive))) //has same origin and is alive
+                if ((enemiesBad[i]!= null)&& ((enemiesBad[i].OriginalVector.Equals(TestVector)) && (enemiesBad[i].alive))) //has same origin and is alive
                 {
                     return true;
                 }
@@ -267,7 +267,7 @@ namespace Chubz
             }
             for (int i = 0; i < enemiesGood.Length; i++)//check all enemies
             {
-                if ((enemiesGood[i]!= null)&& ((enemiesGood[i].OriginalVector == TestVector) && (enemiesGood[i].alive))) //has same origin and is alive
+                if ((enemiesGood[i]!= null)&& ((enemiesGood[i].OriginalVector.Equals(TestVector)) && (enemiesGood[i].alive))) //has same origin and is alive
                 {
                     return true;
                 }
@@ -292,7 +292,7 @@ namespace Chubz
                         if (type)//if good enemy
                         {
 
-                             enemiesGood[i] = new GoodEnemies(OriginalVector, temp); //create good enemy
+                             enemiesGood[i] = new GoodEnemies(OriginalVector, GoodEnemyTextureA); //create good enemy
                         }
                         else // if bad enemy
                         {
@@ -306,6 +306,8 @@ namespace Chubz
                             }
                              enemiesBad[i] = new BadEnemies(OriginalVector, temp); //create bad enemy
                         }
+
+                        return;
                     }
                 }
             }
@@ -313,7 +315,7 @@ namespace Chubz
             {
                 for (int i = 0; i < Enemies.Length; i++) 
                 {
-                    if (Enemies[i] == TestVector)//find the monster in list
+                    if (Enemies[i].Equals(TestVector))//find the monster in list
                     {
                         if (!enemyIsAlive(TestVector))// check if alive?
                         {
@@ -327,7 +329,7 @@ namespace Chubz
         {
             for (int i = 0; i < Enemies.Length; i++)
             {
-                if (Enemies[i] == TestVector)
+                if (Enemies[i].Equals(TestVector))
                 {
                     return true;
                 }
@@ -370,6 +372,26 @@ namespace Chubz
                     if ((Levels.level_1[i, j] == 3))//detecting moving plats
                     {
                         spriteBatch.Draw(NormalPlatformB, tilePos, Color.White); 
+                    }
+                    if ((Levels.level_1[i, j] == 4))
+                    {
+                        Vector2 enemyPosition = new Vector2(j * Levels.TileSize, i * Levels.TileSize);
+
+                        for (int a = 0; a < enemiesGood.Length; a++)
+                        {
+                            if (enemiesGood[a] != null && enemiesGood[a].MapPosition.Equals(enemyPosition))
+                                enemiesGood[a].Draw(spriteBatch, tilePos);
+                        }
+                    }
+                    if ((Levels.level_1[i, j] == 5))
+                    {
+                        Vector2 enemyPosition = new Vector2(j * Levels.TileSize, i * Levels.TileSize);
+
+                        for (int a = 0; a < enemiesBad.Length; a++)
+                        {
+                            if (enemiesBad[a] != null && enemiesBad[a].MapPosition.Equals(enemyPosition))
+                                enemiesBad[a].Draw(spriteBatch, tilePos);
+                        }
                     }
 
                 }
