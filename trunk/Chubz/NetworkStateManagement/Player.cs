@@ -16,7 +16,6 @@ namespace Chubz
         public Vector2 MapPosition;
         public Vector2 ScreenPosition;
         public Vector2 Velocity = Vector2.Zero;
-        public float Ground;
 
         AnimatingSprite sprite;
 
@@ -27,8 +26,7 @@ namespace Chubz
         public Player(Vector2 partial)
         {
             MapPosition = partial;
-            ScreenPosition = new Vector2(400, 300);
-            Ground = MapPosition.Y;
+            ScreenPosition = new Vector2(336, 236);
         }
 
         public void LoadContent(Texture2D t)
@@ -76,7 +74,89 @@ namespace Chubz
 
         public void Update(GameTime gameTime)
         {
+            Rectangle boundingBox, tileBoundingBox;
             sprite.Update(gameTime);
+
+            if (Velocity.X != 0)
+            {
+                MapPosition.X += Velocity.X;
+
+                boundingBox = new Rectangle(
+                    (int)MapPosition.X, (int)MapPosition.Y,
+                    127, 127
+                    );
+
+                for (int y = (int)(MapPosition.Y / Levels.TileSize); y <= (int)((MapPosition.Y + 127) / Levels.TileSize); y++)
+                {
+                    for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
+                    {
+                        if (Levels.level_1[y, x] != 0)
+                        {
+                            tileBoundingBox = new Rectangle(
+                                Levels.TileSize * x, Levels.TileSize * y,
+                                Levels.TileSize, Levels.TileSize
+                                );
+
+                            if (boundingBox.Intersects(tileBoundingBox))
+                            {
+                                if (Velocity.X < 0)
+                                    MapPosition.X = (x + 1) * Levels.TileSize;
+                                else
+                                    MapPosition.X = x * Levels.TileSize - 128;
+                                Velocity.X = 0f;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //gravity
+            if (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] == 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] == 0)
+            {
+                Velocity.Y += 0.25f;
+            }
+
+            MapPosition.Y += Velocity.Y;
+
+            boundingBox = new Rectangle(
+                (int)MapPosition.X, (int)MapPosition.Y,
+                127, 127
+                );
+
+            for (int y = (int)(MapPosition.Y / Levels.TileSize); y <= (int)((MapPosition.Y + 127) / Levels.TileSize); y++)
+            {
+                for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
+                {
+                    if (Levels.level_1[y, x] != 0)
+                    {
+                        tileBoundingBox = new Rectangle(
+                            Levels.TileSize * x, Levels.TileSize * y,
+                            Levels.TileSize, Levels.TileSize
+                            );
+
+                        if (boundingBox.Intersects(tileBoundingBox))
+                        {
+                            if (Velocity.Y < 0f)
+                            {
+                                MapPosition.Y = (y + 1) * Levels.TileSize;
+                                Velocity.Y = 0f;
+                            }
+                            else if (Velocity.Y > 0f)
+                                MapPosition.Y = y * Levels.TileSize - 128;
+                        }
+                    }
+                }
+            }
+
+            //just landed on a platform
+            if (sprite.CurrentAnimation.Contains("fall") &&
+                (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] != 0 ||
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] != 0))
+            {
+                sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 5);
+                sprite.StopAnimation();
+            }
         }
 
         public void HandleInput(InputState input)
@@ -85,8 +165,9 @@ namespace Chubz
             PlayerIndex playerIndex;
             bool keyPressed = false;
 
-            //on ground
-            if (MapPosition.Y == Ground)
+            //on solid platform
+            if (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] != 0 ||
+                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] != 0)
             {
                 if (ks.IsKeyDown(Keys.Left))
                 {
@@ -99,7 +180,6 @@ namespace Chubz
                     else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy left"))
                         sprite.CurrentAnimation = "heavy left";
 
-                    MapPosition += Velocity;
                     sprite.StartAnimation();
                     keyPressed = true;
                 }
@@ -114,7 +194,6 @@ namespace Chubz
                     else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy right"))
                         sprite.CurrentAnimation = "heavy right";
 
-                    MapPosition += Velocity;
                     sprite.StartAnimation();
                     keyPressed = true;
                 }
@@ -145,7 +224,6 @@ namespace Chubz
                             sprite.CurrentAnimation = "heavy left fall";
                     }
 
-                    MapPosition += Velocity;
                     sprite.StartAnimation();
                     keyPressed = true;
                 }
@@ -154,22 +232,6 @@ namespace Chubz
                 {
                     Velocity = Vector2.Zero;
                     sprite.Animations[sprite.CurrentAnimation].Reset();
-                    sprite.StopAnimation();
-                }
-            }
-
-            //gravity
-            if (MapPosition.Y < Ground)
-            {
-                Velocity.Y += 0.25f;
-                MapPosition += Velocity;
-
-                if (MapPosition.Y >= Ground)
-                {
-                    MapPosition.Y = Ground;
-                    Velocity = Vector2.Zero;
-                    sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 5);
-                    sprite.Animations[sprite.CurrentAnimation].Reset(); 
                     sprite.StopAnimation();
                 }
             }
