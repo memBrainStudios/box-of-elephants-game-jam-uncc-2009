@@ -15,6 +15,7 @@ namespace Chubz
     {
         public Vector2 MapPosition;
         public Vector2 ScreenPosition;
+        public Vector2 Velocity = Vector2.Zero;
 
         AnimatingSprite sprite;
 
@@ -74,7 +75,7 @@ namespace Chubz
 
             if (ks.IsKeyDown(Keys.Left))
             {
-                MapPosition.X -= 8 - 2 * Size;
+                Velocity.X = -(8 - 2 * Size);
 
                 if (Size == 1 && !sprite.CurrentAnimation.Equals("light left"))
                     sprite.CurrentAnimation = "light left";
@@ -83,11 +84,12 @@ namespace Chubz
                 else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy left"))
                     sprite.CurrentAnimation = "heavy left";
 
+                MapPosition += Velocity;
                 sprite.StartAnimation();
             }
             else if (ks.IsKeyDown(Keys.Right))
             {
-                MapPosition.X += 8 - 2 * Size;
+                Velocity.X = 8 - 2 * Size;
 
                 if (Size == 1 && !sprite.CurrentAnimation.Equals("light right"))
                     sprite.CurrentAnimation = "light right";
@@ -96,6 +98,7 @@ namespace Chubz
                 else if (Size == 3 && !sprite.CurrentAnimation.Equals("heavy right"))
                     sprite.CurrentAnimation = "heavy right";
 
+                MapPosition += Velocity;
                 sprite.StartAnimation();
             }
             else

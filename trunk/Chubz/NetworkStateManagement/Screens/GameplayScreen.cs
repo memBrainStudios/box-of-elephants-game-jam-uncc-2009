@@ -89,7 +89,7 @@ namespace Chubz
 
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
-            player = new Player(new Vector2(0, 576));
+            player = new Player(new Vector2(10, 500));
             Levels.Initialize();
 
         }
