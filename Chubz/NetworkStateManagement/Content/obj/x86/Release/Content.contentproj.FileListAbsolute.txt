@@ -1,0 +1,2 @@
+C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\Content\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Robby\Documents\Game Jam SVN\Chubz\NetworkStateManagement\Content\obj\x86\Release\Audio\Chubz Audio.xml
