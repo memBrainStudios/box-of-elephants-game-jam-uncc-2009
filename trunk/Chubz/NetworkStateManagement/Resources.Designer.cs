@@ -312,7 +312,7 @@ namespace Chubz {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main Menu.
+        ///   Looks up a localized string similar to Chubz Way Home.
         /// </summary>
         internal static string MainMenu {
             get {

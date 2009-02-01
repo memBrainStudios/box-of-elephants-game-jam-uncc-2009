@@ -217,6 +217,15 @@
       <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\Intro\WarningLogo.xnb</Output>
       <Time>2009-01-31T16:56:21.71875-05:00</Time>
     </Item>
+    <Item>
+      <Source>backgroundFinal.png</Source>
+      <Name>backgroundFinal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Box Of Elephants\Chubz\NetworkStateManagement\bin\x86\Debug\Content\backgroundFinal.xnb</Output>
+      <Time>2009-01-31T20:01:32.859375-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

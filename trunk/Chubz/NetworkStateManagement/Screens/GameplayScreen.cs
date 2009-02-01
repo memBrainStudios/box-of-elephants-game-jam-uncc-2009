@@ -53,7 +53,6 @@ namespace Chubz
         Texture2D NormalPlatformB;
         Texture2D enemiesTexture;
         Texture2D goalTexture;
-        Texture2D gameBackground;
         Texture2D staticBG;
 
         AnimatingSprite bg;
