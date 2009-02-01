@@ -169,8 +169,8 @@ namespace Chubz
                 );
 
             playerBoundingBox = new Rectangle(
-                (int)player.MapPosition.X, (int)player.MapPosition.Y,
-                127, 127
+                (int)player.MapPosition.X + player.bound, (int)player.MapPosition.Y + player.bound,
+                127 - player.bound, 127 - player.bound
                 );
 
             if (boundingBox.Intersects(playerBoundingBox))
