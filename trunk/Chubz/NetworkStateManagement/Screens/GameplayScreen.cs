@@ -43,6 +43,9 @@ namespace Chubz
         float enemySpawnTimer = 0f;
         float totalTime = 0f;
 
+        bool toggle = true;
+        int count = 0;
+
         Platforms[] platforms = new Platforms[40];
 
         Texture2D grndTexture;
@@ -256,6 +259,16 @@ namespace Chubz
 
             bg.StartAnimation();
             bg.Update(gameTime);
+
+            if (count < 40)
+                count++;
+            else
+                count = 0;
+            if (count == 40)
+                if (toggle)
+                    toggle = false;
+                else
+                    toggle = true;
         }
 
 
@@ -425,7 +438,10 @@ namespace Chubz
 
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.BackToFront, SaveStateMode.None);
             //bg.Draw(spriteBatch);
-            spriteBatch.Draw(staticBG, new Rectangle(0, 0, 800, 600), new Rectangle(0, 0, 800, 600), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+            if (toggle)
+                spriteBatch.Draw(staticBG, new Rectangle(0, 0, 800, 600), new Rectangle(0, 0, 800, 600), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+            else
+                spriteBatch.Draw(staticBG, new Rectangle(0, 0, 800, 600), new Rectangle(800, 0, 800, 600), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
             for (int i = 0; i < Levels.level_1.GetLength(0); i++)
             {
                 for (int j = 0; j < Levels.level_1.GetLength(1); j++)
