@@ -25,13 +25,15 @@ namespace Chubz
         public int Size = 2;
 
         float exerciseTimer = 0f;
-        float exerciseTime = 0.5f;
+        float exerciseTime = 0.75f;
 
         float eatTimer = 0f;
         float eatTime = 0.5f;
 
         public bool Win = false;
         public bool Lose = false;
+
+        public int bound = 16;
 
         public Player(Vector2 partial)
         {
@@ -154,11 +156,11 @@ namespace Chubz
             bool keyPressed = false;
 
             //on solid platform
-            if ((MapPosition.Y + 128) / Levels.TileSize >= Levels.Height ||
-                ((Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] > 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] < 4) ||
-                (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] > 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] < 4)))
+            if ((MapPosition.Y + 128 - bound) / Levels.TileSize >= Levels.Height ||
+                ((Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] > 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] < 4) ||
+                (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] > 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] < 4)))
             {
                 if (ks.IsKeyDown(Keys.Left))
                 {
@@ -261,13 +263,13 @@ namespace Chubz
                 MapPosition.X += Velocity.X;
 
                 boundingBox = new Rectangle(
-                    (int)MapPosition.X, (int)MapPosition.Y,
-                    127, 127
+                    (int)MapPosition.X + bound, (int)MapPosition.Y + bound,
+                    127 - bound, 127 - bound
                     );
 
-                for (int y = (int)(MapPosition.Y / Levels.TileSize); y <= (int)((MapPosition.Y + 127) / Levels.TileSize); y++)
+                for (int y = (int)((MapPosition.Y + bound) / Levels.TileSize); y <= (int)((MapPosition.Y + 127 - bound) / Levels.TileSize); y++)
                 {
-                    for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
+                    for (int x = (int)((MapPosition.X + bound) / Levels.TileSize); x <= (int)((MapPosition.X + 127 - bound) / Levels.TileSize); x++)
                     {
                         if (y >= Levels.Height || x >= Levels.Width ||
                             (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 4))
@@ -280,9 +282,9 @@ namespace Chubz
                             if (boundingBox.Intersects(tileBoundingBox))
                             {
                                 if (Velocity.X < 0)
-                                    MapPosition.X = (x + 1) * Levels.TileSize;
+                                    MapPosition.X = (x + 1) * Levels.TileSize - bound;
                                 else
-                                    MapPosition.X = x * Levels.TileSize - 128;
+                                    MapPosition.X = x * Levels.TileSize - 128 + bound;
                                 Velocity.X = 0f;
                             }
                         }
@@ -295,50 +297,50 @@ namespace Chubz
                     }
                 }
 
-                for (int i = 0; i < platforms.Length; i++)
-                {
-                    if (platforms[i] != null && platforms[i].Active)
-                    {
-                        tileBoundingBox = new Rectangle(
-                            (int)platforms[i].MapPosition.X, (int)platforms[i].MapPosition.Y,
-                            31, 31
-                            );
+                //for (int i = 0; i < platforms.Length; i++)
+                //{
+                //    if (platforms[i] != null && platforms[i].Active)
+                //    {
+                //        tileBoundingBox = new Rectangle(
+                //            (int)platforms[i].MapPosition.X, (int)platforms[i].MapPosition.Y,
+                //            32, 32
+                //            );
 
-                        if (boundingBox.Intersects(tileBoundingBox))
-                        {
-                            if (Velocity.X < 0)
-                                MapPosition.X = platforms[i].MapPosition.X + 32;
-                            else
-                                MapPosition.X = platforms[i].MapPosition.X - 128;
-                            Velocity.X = 0f;
-                        }
-                    }
-                }
+                //        if (boundingBox.Intersects(tileBoundingBox))
+                //        {
+                //            if (Velocity.X < 0)
+                //                MapPosition.X = platforms[i].MapPosition.X + 32 - bound;
+                //            else
+                //                MapPosition.X = platforms[i].MapPosition.X - 128 + bound;
+                //            Velocity.X = 0f;
+                //        }
+                //    }
+                //}
             }
 
             //gravity
-            if (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] == 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] == 0)
+            if (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound)/ Levels.TileSize)] == 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] == 0)
             {
                 Velocity.Y += 0.25f;
             }
 
             MapPosition.Y += Velocity.Y;
 
-            if (MapPosition.Y + 128 > Levels.Height * Levels.TileSize)
+            if (MapPosition.Y + 128 - bound > Levels.Height * Levels.TileSize)
             {
                 Lose = true;
                 return;
             }  
 
             boundingBox = new Rectangle(
-                (int)MapPosition.X, (int)MapPosition.Y,
-                127, 127
+                (int)MapPosition.X + bound, (int)MapPosition.Y + bound,
+                127 - bound, 127 - bound
                 );
 
-            for (int y = (int)(MapPosition.Y / Levels.TileSize); y <= (int)((MapPosition.Y + 127) / Levels.TileSize); y++)
+            for (int y = (int)((MapPosition.Y + bound) / Levels.TileSize); y <= (int)((MapPosition.Y + 127 - bound) / Levels.TileSize); y++)
             {
-                for (int x = (int)(MapPosition.X / Levels.TileSize); x <= (int)((MapPosition.X + 127) / Levels.TileSize); x++)
+                for (int x = (int)((MapPosition.X + bound) / Levels.TileSize); x <= (int)((MapPosition.X + 127 - bound) / Levels.TileSize); x++)
                 {
                     if (y >= Levels.Height || x >= Levels.Width ||
                             (Levels.level_1[y, x] > 0 && Levels.level_1[y, x] < 4))
@@ -352,11 +354,11 @@ namespace Chubz
                         {
                             if (Velocity.Y < 0f)
                             {
-                                MapPosition.Y = (y + 1) * Levels.TileSize;
+                                MapPosition.Y = (y + 1) * Levels.TileSize - bound;
                                 Velocity.Y = 0f;
                             }
                             else if (Velocity.Y > 0f)
-                                MapPosition.Y = y * Levels.TileSize - 128;
+                                MapPosition.Y = y * Levels.TileSize - 128 + bound;
                         }
                     }
 
@@ -368,35 +370,35 @@ namespace Chubz
                 }
             }
 
-            for (int i = 0; i < platforms.Length; i++)
-            {
-                if (platforms[i] != null && platforms[i].Active)
-                {
-                    tileBoundingBox = new Rectangle(
-                        (int)platforms[i].MapPosition.X, (int)platforms[i].MapPosition.Y,
-                        31, 31
-                        );
+            //for (int i = 0; i < platforms.Length; i++)
+            //{
+            //    if (platforms[i] != null && platforms[i].Active)
+            //    {
+            //        tileBoundingBox = new Rectangle(
+            //            (int)platforms[i].MapPosition.X, (int)platforms[i].MapPosition.Y,
+            //            32, 32
+            //            );
 
-                    if (boundingBox.Intersects(tileBoundingBox))
-                    {
-                        if (Velocity.Y < 0f)
-                        {
-                            MapPosition.Y = platforms[i].MapPosition.Y + 32;
-                            Velocity.Y = 0f;
-                        }
-                        else if (Velocity.Y > 0f)
-                            MapPosition.Y = platforms[i].MapPosition.Y - 128;
-                    }
-                }
-            }
+            //        if (boundingBox.Intersects(tileBoundingBox))
+            //        {
+            //            if (Velocity.Y < 0f)
+            //            {
+            //                MapPosition.Y = platforms[i].MapPosition.Y + 32 - bound;
+            //                Velocity.Y = 0f;
+            //            }
+            //            else if (Velocity.Y > 0f)
+            //                MapPosition.Y = platforms[i].MapPosition.Y - 128 + bound;
+            //        }
+            //    }
+            //}
 
             //just landed on a platform
             if (sprite.CurrentAnimation.Contains("fall") &&
-                ((MapPosition.Y + 128) / Levels.TileSize >= Levels.Height ||
-                ((Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] > 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)(MapPosition.X / Levels.TileSize)] < 4) ||
-                (Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] > 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128) / Levels.TileSize), (int)((MapPosition.X + 127) / Levels.TileSize)] < 4))))
+                ((MapPosition.Y + 128 - bound) / Levels.TileSize >= Levels.Height ||
+                ((Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] > 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] < 4) ||
+                (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] > 0 &&
+                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] < 4))))
             {
                 sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 5);
                 sprite.StopAnimation();

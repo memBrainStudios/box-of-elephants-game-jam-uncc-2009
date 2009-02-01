@@ -39,7 +39,9 @@ namespace Chubz
 
             //bounding box only determines if the player is on top of the platform
             boundingBox = new Rectangle((int)MapPosition.X, (int)MapPosition.Y - 2, 32, 1);
-            playerBoundingBox = new Rectangle((int)player.MapPosition.X, (int)player.MapPosition.Y, 127, 127);
+            playerBoundingBox = new Rectangle(
+                (int)player.MapPosition.X + player.bound, (int)player.MapPosition.Y + player.bound,
+                127 - player.bound, 127 - player.bound);
 
             if (Velocity.Y == 0f && player.Weight > tolerance && boundingBox.Intersects(playerBoundingBox))
             {
