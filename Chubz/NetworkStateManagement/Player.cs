@@ -156,17 +156,17 @@ namespace Chubz
             bool keyPressed = false;
 
             //on solid platform
-            if ((MapPosition.Y + 128 - bound) / Levels.TileSize >= Levels.Height ||
-                ((Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] > 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] < 4) ||
-                (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] > 0 &&
-                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] < 4)))
+            //if ((MapPosition.Y + 128 - bound) / Levels.TileSize >= Levels.Height ||
+            //    ((Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] > 0 &&
+            //    Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] < 4) ||
+            //    (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] > 0 &&
+            //    Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] < 4)))
             {
                 if (ks.IsKeyDown(Keys.Left))
                 {
                     Velocity.X = -(8 - 2 * Size);
 
-                    if (!sprite.CurrentAnimation.Contains("eat"))
+                    if (!sprite.CurrentAnimation.Contains("eat") && !sprite.CurrentAnimation.Contains("fall"))
                     {
                         if (Size == 1 && !sprite.CurrentAnimation.Equals("light left"))
                             sprite.CurrentAnimation = "light left";
@@ -183,7 +183,7 @@ namespace Chubz
                 {
                     Velocity.X = 8 - 2 * Size;
 
-                    if (!sprite.CurrentAnimation.Contains("eat"))
+                    if (!sprite.CurrentAnimation.Contains("eat") && !sprite.CurrentAnimation.Contains("fall"))
                     {
                         if (Size == 1 && !sprite.CurrentAnimation.Equals("light right"))
                             sprite.CurrentAnimation = "light right";
@@ -239,7 +239,12 @@ namespace Chubz
                     keyPressed = true;
                 }
 
-                if (!keyPressed)
+                if (!keyPressed &&
+                    ((MapPosition.Y + 128 - bound) / Levels.TileSize >= Levels.Height ||
+                    ((Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] > 0 &&
+                    Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] < 4) ||
+                    (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] > 0 &&
+                    Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] < 4))))
                 {
                     Velocity = Vector2.Zero;
                     sprite.Animations[sprite.CurrentAnimation].Reset();
