@@ -54,6 +54,7 @@ namespace Chubz
         Texture2D enemiesTexture;
         Texture2D goalTexture;
         Texture2D staticBG;
+        Texture2D scale;
 
         AnimatingSprite bg;
         Animation bgAnim;
@@ -146,6 +147,7 @@ namespace Chubz
             goalTexture = content.Load<Texture2D>("Door");
             enemiesTexture = content.Load<Texture2D>("FoodSpriteSheet");
             staticBG = content.Load<Texture2D>("backgroundFinal");
+            scale = content.Load<Texture2D>("scale");
 
             bg.Texture = content.Load<Texture2D>("backgroundFinal");
 
@@ -509,14 +511,15 @@ namespace Chubz
                 Color.White
                 );*/
 
+            spriteBatch.Draw(scale, new Rectangle(0, 0, 128, 128), new Rectangle(0, 0, 256, 256), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 0.1f);
             spriteBatch.DrawString(
                 ScreenManager.Font,
-                "Weight: " + player.Weight + " lbs.",
-                new Vector2(10, 10),
+                player.Weight + " lbs.",
+                new Vector2(36, 84),
                 Color.White,
                 0f,
                 new Vector2(0, 0),
-                1f,
+                0.5f,
                 SpriteEffects.None,
                 0f);
 
