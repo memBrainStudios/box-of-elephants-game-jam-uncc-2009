@@ -194,7 +194,7 @@ namespace Chubz
             // Draw the menu title.
             Vector2 titlePosition = new Vector2(400, 350);
             Vector2 titleOrigin = font.MeasureString(menuTitle) / 2;
-            Color titleColor = Color.Green;
+            Color titleColor = Color.LimeGreen;
             float titleScale = 1.50f;
 
             titlePosition.Y -= transitionOffset * 100;
