@@ -401,13 +401,14 @@ namespace Chubz
             // Our player and enemy are both actually just text strings.
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
+            Vector2 playerPos = player.ScreenPosition - player.MapPosition;
+
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.BackToFront, SaveStateMode.None);
             for (int i = 0; i < Levels.level_1.GetLength(0); i++)
             {
                 for (int j = 0; j < Levels.level_1.GetLength(1); j++)
                 {
                     Vector2 tilePos = new Vector2(j * Levels.TileSize, i * Levels.TileSize);
-                    Vector2 playerPos = player.ScreenPosition - player.MapPosition;
 
                     tilePos += playerPos;
 
@@ -453,13 +454,13 @@ namespace Chubz
                                 enemiesBad[a].Draw(spriteBatch, playerPos);
                         }
                     }
-
-                    for (int a = 0; a < platforms.Length; a++)
-                    {
-                        if (platforms[a] != null && platforms[a].Active)
-                            platforms[a].Draw(spriteBatch, playerPos);
-                    }
                 }
+            }
+
+            for (int a = 0; a < platforms.Length; a++)
+            {
+                if (platforms[a] != null && platforms[a].Active)
+                    platforms[a].Draw(spriteBatch, playerPos);
             }
 
             player.Draw(spriteBatch);
