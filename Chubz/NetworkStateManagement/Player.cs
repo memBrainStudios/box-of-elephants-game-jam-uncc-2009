@@ -141,6 +141,10 @@ namespace Chubz
                     eatTimer = 0f;
                 }
             }
+            if (Weight < 150)
+            {
+                Weight = 150;
+            }
         }
 
         public void HandleInput(InputState input)
