@@ -50,6 +50,14 @@ namespace Chubz
             else
                 text = "You lost!";
 
+            text += "\n\nA Box of Elephants Production\n\n" +
+                "Chris Wykel\n" +
+                "Robby Florence\n" +
+                "David Joy\n" +
+                "Andrew McKinney\n" +
+                "Yoo Shin Kim\n" +
+                "Ben Andersen";
+
             if (networkSession == null)
             {
                 // If this is a single player game, add the Quit menu entry.
@@ -149,7 +157,7 @@ namespace Chubz
 
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(ScreenManager.Font, text, new Vector2(400, 300), Color.White);
+            spriteBatch.DrawString(ScreenManager.Font, text, new Vector2(300, 100), Color.White);
 
             spriteBatch.End();
         }
