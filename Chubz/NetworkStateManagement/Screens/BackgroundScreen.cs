@@ -27,6 +27,7 @@ namespace Chubz
 
         ContentManager content;
         Texture2D backgroundTexture;
+        Texture2D newBackground;
 
         AnimatingSprite chubzSprite;
         AnimatingSprite donutSprite;
@@ -126,6 +127,7 @@ namespace Chubz
             chubzSprite.Texture = content.Load<Texture2D>("chubs spritesheet");
             donutSprite.Texture = content.Load<Texture2D>("FoodSpriteSheet");
             orangeSprite.Texture = content.Load<Texture2D>("FoodSpriteSheet");
+            newBackground = content.Load<Texture2D>("backgroundFinal");
         }
 
 
@@ -226,8 +228,9 @@ namespace Chubz
 
             spriteBatch.Begin(/*SpriteBlendMode.None*/);
 
-            spriteBatch.Draw(backgroundTexture, fullscreen,
-                             new Color(fade, fade, fade));
+            /*spriteBatch.Draw(backgroundTexture, fullscreen,
+                             new Color(fade, fade, fade));*/
+            spriteBatch.Draw(newBackground, new Rectangle(0, 0, 800, 600), new Rectangle(0, 0, 800, 600),Color.White);
             orangeSprite.Position = posO;
             orangeSprite.Draw(spriteBatch, 0.5f);
             chubzSprite.Position = pos;
