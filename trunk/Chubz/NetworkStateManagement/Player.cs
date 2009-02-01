@@ -33,7 +33,7 @@ namespace Chubz
         public bool Win = false;
         public bool Lose = false;
 
-        public int bound = 16;
+        public int bound = 15;
 
         public Player(Vector2 partial)
         {
