@@ -20,7 +20,7 @@ namespace Chubz
         
         public AnimatingSprite sprite;
 
-        public int Weight = 300;
+        public int Weight = 265;
         //1 = light, 2 = medium, 3 = heavy
         public int Size = 2;
 
@@ -34,6 +34,8 @@ namespace Chubz
         public bool Lose = false;
 
         public int bound = 15;
+
+        int jumpCount = 0;
 
         public Player(Vector2 partial)
         {
@@ -197,12 +199,14 @@ namespace Chubz
                     keyPressed = true;
                 }
 
-                if (input.IsNewKeyPress(Keys.Space, null, out playerIndex) && (Size == 3 ||
+                if (input.IsNewKeyPress(Keys.Space, null, out playerIndex) && ((Size == 3 && jumpCount <= 1) ||
                     ((Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] > 0 &&
                     Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] < 4) ||
                     (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] > 0 &&
                     Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] < 4))))
                 {
+                    jumpCount++;
+
                     Velocity.Y = -(12 - 1.5f * Size);
 
                     if(Size == 1)
@@ -253,6 +257,7 @@ namespace Chubz
                     Velocity = Vector2.Zero;
                     sprite.Animations[sprite.CurrentAnimation].Reset();
                     sprite.StopAnimation();
+                    jumpCount = 0;
                 }
             }
         }
