@@ -403,6 +403,17 @@ namespace Chubz
                 sprite.CurrentAnimation = sprite.CurrentAnimation.Remove(sprite.CurrentAnimation.Length - 5);
                 sprite.StopAnimation();
             }
+
+            //in air
+            if (!sprite.CurrentAnimation.Contains("fall") && !sprite.CurrentAnimation.Contains("eat") &&
+                ((MapPosition.Y + 128 - bound) / Levels.TileSize >= Levels.Height ||
+                ((Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] <= 0 ||
+                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] >= 4) &&
+                (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] <= 0 ||
+                Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] >= 4))))
+            {
+                sprite.CurrentAnimation = sprite.CurrentAnimation + " fall";
+            }
         }
     }
     
