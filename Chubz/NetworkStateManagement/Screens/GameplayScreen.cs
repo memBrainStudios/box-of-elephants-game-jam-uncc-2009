@@ -46,7 +46,7 @@ namespace Chubz
         bool toggle = true;
         int count = 0;
 
-        Platforms[] platforms = new Platforms[40];
+        Platforms[] platforms = new Platforms[70];
 
         Texture2D grndTexture;
         Texture2D NormalPlatformA;
