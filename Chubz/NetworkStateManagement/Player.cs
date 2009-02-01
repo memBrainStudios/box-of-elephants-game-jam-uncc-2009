@@ -25,7 +25,7 @@ namespace Chubz
         public int Size = 2;
 
         float exerciseTimer = 0f;
-        float exerciseTime = 0.75f;
+        float exerciseTime = 1f;
 
         float eatTimer = 0f;
         float eatTime = 0.5f;
@@ -197,7 +197,11 @@ namespace Chubz
                     keyPressed = true;
                 }
 
-                if (input.IsNewKeyPress(Keys.Space, null, out playerIndex))
+                if (input.IsNewKeyPress(Keys.Space, null, out playerIndex) && (Size == 3 ||
+                    ((Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] > 0 &&
+                    Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + bound) / Levels.TileSize)] < 4) ||
+                    (Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] > 0 &&
+                    Levels.level_1[(int)((MapPosition.Y + 128 - bound) / Levels.TileSize), (int)((MapPosition.X + 127 - bound) / Levels.TileSize)] < 4))))
                 {
                     Velocity.Y = -(12 - 1.5f * Size);
 
