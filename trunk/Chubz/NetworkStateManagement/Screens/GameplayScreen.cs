@@ -50,6 +50,11 @@ namespace Chubz
         Texture2D NormalPlatformB;
         Texture2D enemiesTexture;
         Texture2D goalTexture;
+        Texture2D gameBackground;
+        Texture2D staticBG;
+
+        AnimatingSprite bg;
+        Animation bgAnim;
 
         #endregion
 
@@ -100,6 +105,15 @@ namespace Chubz
             Levels.Initialize();
             initilizeEnemies();
 
+
+            bg = new AnimatingSprite();
+            bgAnim = new Animation(800, 600, 2, 0, 0);
+            bgAnim.FramesPerSecond = 4;
+
+            bg.Animations.Add("animation", bgAnim);
+
+            bg.CurrentAnimation = "animation";
+            bg.StopAnimation();
         }
 
 
@@ -129,6 +143,9 @@ namespace Chubz
             grndTexture = content.Load<Texture2D>("wall");
             goalTexture = content.Load<Texture2D>("Door");
             enemiesTexture = content.Load<Texture2D>("FoodSpriteSheet");
+            staticBG = content.Load<Texture2D>("backgroundFinal");
+
+            bg.Texture = content.Load<Texture2D>("backgroundFinal");
 
             initPlatforms();
         }
@@ -236,6 +253,9 @@ namespace Chubz
                                        new LobbyScreen(networkSession));
                 }
             }
+
+            bg.StartAnimation();
+            bg.Update(gameTime);
         }
 
 
@@ -404,6 +424,8 @@ namespace Chubz
             Vector2 playerPos = player.ScreenPosition - player.MapPosition;
 
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.BackToFront, SaveStateMode.None);
+            //bg.Draw(spriteBatch);
+            spriteBatch.Draw(staticBG, new Rectangle(0, 0, 800, 600), new Rectangle(0, 0, 800, 600), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
             for (int i = 0; i < Levels.level_1.GetLength(0); i++)
             {
                 for (int j = 0; j < Levels.level_1.GetLength(1); j++)
@@ -415,12 +437,12 @@ namespace Chubz
                     if ((Levels.level_1[i, j] == 1))//detecting walls
                     {
                         //spriteBatch.Draw(grndTexture, tilePos, Color.White);
-                        spriteBatch.Draw(grndTexture, new Rectangle((int)tilePos.X,(int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+                        spriteBatch.Draw(grndTexture, new Rectangle((int)tilePos.X,(int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, .9f);
                     }
                     if ((Levels.level_1[i, j] == 2))//detecting immobile plats
                     {
                         //spriteBatch.Draw(NormalPlatformA, tilePos, Color.White);
-                        spriteBatch.Draw(NormalPlatformA, new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+                        spriteBatch.Draw(NormalPlatformA, new Rectangle((int)tilePos.X, (int)tilePos.Y, 32, 32), new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, .9f);
                     }
                     if ((Levels.level_1[i, j] == 3))//detecting moving plats
                     {
@@ -431,7 +453,7 @@ namespace Chubz
                     {
                         /*spriteBatch.Draw(goalTexture,
                             new Rectangle((int)tilePos.X, (int)tilePos.Y, 128, 128), Color.White);*/
-                        spriteBatch.Draw(goalTexture, new Rectangle((int)tilePos.X, (int)tilePos.Y, 128, 128), new Rectangle(0, 0, 128, 128), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+                        spriteBatch.Draw(goalTexture, new Rectangle((int)tilePos.X, (int)tilePos.Y, 128, 128), new Rectangle(0, 0, 128, 128), Color.White, 0f, new Vector2(0, 0), SpriteEffects.None, .99f);
                     }
 
                     if ((Levels.level_1[i, j] == 4))
