@@ -79,7 +79,8 @@ namespace Chubz
             else
                 fade = new Color(160, 160, 160);
 
-            spriteBatch.Draw(texture, MapPosition + screenOffset, fade);
+            //spriteBatch.Draw(texture, MapPosition + screenOffset, fade);
+            spriteBatch.Draw(texture, MapPosition + screenOffset , new Rectangle(0, 0, 32, 32), Color.White, 0f, new Vector2(0, 0), 1f,SpriteEffects.None, 0.9f);
         }
     }
 }
