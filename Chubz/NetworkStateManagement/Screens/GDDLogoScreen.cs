@@ -25,13 +25,11 @@ namespace Chubz
         #region Fields
 
         TimeSpan elapsedTime = TimeSpan.Zero;
-        bool drawGDDLogo = true;
         TimeSpan stopGDDTime = TimeSpan.FromSeconds(1.0);
 
         //Game Audio --Chris Wykel
         ContentManager content;
         Texture2D logoTexture;
-        float scale = 0.0f;
 
         #endregion
 
@@ -90,8 +88,6 @@ namespace Chubz
             //stop drawing GDD logo after set amount of time
             if (elapsedTime > stopGDDTime)
             {
-                drawGDDLogo = false;
-                // Activate the first screens.
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new BackgroundScreen(), new MainMenuScreen());
             }
         }
@@ -122,23 +118,6 @@ namespace Chubz
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
 
             spriteBatch.Begin();
-            
-            if (drawGDDLogo)
-            {
-                int spriteW = (int)(scale * logoTexture.Width);
-                int spriteH = (int)(scale * logoTexture.Height);
-
-                spriteBatch.Draw(logoTexture,
-                    new Vector2((viewport.Width - spriteW) / 2, (viewport.Height - spriteH) / 2), //centered
-                    null,
-                    Color.White,
-                    0.0f,
-                    Vector2.Zero,
-                    scale,
-                    SpriteEffects.None,
-                    0.0f
-                    );
-            }
             spriteBatch.End();
         }
 
