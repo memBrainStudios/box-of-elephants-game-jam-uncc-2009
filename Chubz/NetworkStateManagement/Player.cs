@@ -282,6 +282,12 @@ namespace Chubz
                                 Velocity.X = 0f;
                             }
                         }
+
+                        if (y < Levels.Height && x < Levels.Width && Levels.level_1[y, x] == 9)
+                        {
+                            Win = true;
+                            return;
+                        }
                     }
                 }
 
@@ -348,6 +354,12 @@ namespace Chubz
                             else if (Velocity.Y > 0f)
                                 MapPosition.Y = y * Levels.TileSize - 128;
                         }
+                    }
+
+                    if (y < Levels.Height && x < Levels.Width && Levels.level_1[y, x] == 9)
+                    {
+                        Win = true;
+                        return;
                     }
                 }
             }
