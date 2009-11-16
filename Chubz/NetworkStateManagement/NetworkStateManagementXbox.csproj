@@ -43,36 +43,96 @@
     <XnaCompressContent>True</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
-    <Compile Include="IMessageDisplay.cs" />
-    <Compile Include="MessageDisplayComponent.cs" />
-    <Compile Include="Networking\AvailableSessionMenuEntry.cs" />
-    <Compile Include="Networking\CreateOrFindSessionScreen.cs" />
-    <Compile Include="Networking\JoinSessionScreen.cs" />
-    <Compile Include="Networking\LobbyScreen.cs" />
-    <Compile Include="Networking\NetworkBusyScreen.cs" />
-    <Compile Include="Networking\NetworkErrorScreen.cs" />
-    <Compile Include="Networking\NetworkSessionComponent.cs" />
-    <Compile Include="Networking\OperationCompletedEventArgs.cs" />
-    <Compile Include="Networking\ProfileSignInScreen.cs" />
+    <Compile Include="AnimatingSprite.cs" />
+    <Compile Include="BadEnemies.cs" />
+    <Compile Include="Game.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GoodEnemies.cs" />
+    <Compile Include="IMessageDisplay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Levels.cs" />
+    <Compile Include="MessageDisplayComponent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\AvailableSessionMenuEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\CreateOrFindSessionScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\JoinSessionScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\LobbyScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\NetworkBusyScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\NetworkErrorScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\NetworkSessionComponent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\OperationCompletedEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\ProfileSignInScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Platforms.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ScreenManager\GameScreen.cs" />
-    <Compile Include="ScreenManager\InputState.cs" />
-    <Compile Include="ScreenManager\ScreenManager.cs" />
-    <Compile Include="Screens\BackgroundScreen.cs" />
-    <Compile Include="Screens\GameplayScreen.cs" />
-    <Compile Include="Screens\LoadingScreen.cs" />
-    <Compile Include="Screens\MainMenuScreen.cs" />
-    <Compile Include="Screens\MenuEntry.cs" />
-    <Compile Include="Screens\MenuScreen.cs" />
-    <Compile Include="Screens\MessageBoxScreen.cs" />
-    <Compile Include="Screens\PauseMenuScreen.cs" />
-    <Compile Include="Screens\PlayerIndexEventArgs.cs" />
+    <Compile Include="ScreenManager\GameAudio.cs" />
+    <Compile Include="ScreenManager\GameScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScreenManager\InputState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScreenManager\ScreenManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\BackgroundScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\GameOverScreen.cs" />
+    <Compile Include="Screens\GameplayScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\GDDLogoScreen.cs" />
+    <Compile Include="Screens\LoadingScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\LogoScreen.cs" />
+    <Compile Include="Screens\LogoTitleScreen.cs" />
+    <Compile Include="Screens\MainMenuScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\MenuEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\MenuScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\MessageBoxScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\PauseMenuScreen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\PlayerIndexEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\WarningScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

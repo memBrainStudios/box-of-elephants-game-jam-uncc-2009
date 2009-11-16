@@ -1,29 +1,40 @@
-Content\gamefont.xnb
-Content\menufont.xnb
+Content\Audio\BackMusei_vol3.xnb
+Content\Audio\BackMusic_vol1.xnb
+Content\Audio\Backmusic_vol2.xnb
+Content\Audio\button2.xnb
+Content\Audio\Button_Click1.xnb
+Content\Audio\C&C_Yeah!.xnb
+Content\Audio\ComingBoss.xnb
+Content\Audio\Eating(edit).xnb
+Content\Audio\Eating_noodle(edit).xnb
+Content\Audio\Elephant Logo.xnb
+Content\Audio\jump fat.xnb
+Content\Audio\jump light.xnb
+Content\Audio\jump medium.xnb
+Content\Audio\man_scream1.xnb
+Content\Audio\Mission_fail.xnb
 Content\background.xnb
+Content\backgroundFinal.xnb
 Content\blank.xnb
-Content\gradient.xnb
-Content\cat.xnb
 Content\chat_able.xnb
 Content\chat_mute.xnb
 Content\chat_ready.xnb
 Content\chat_talking.xnb
 Content\chubs spritesheet.xnb
-Content\grndTexture.xnb
-Content\platformAold.xnb
-Content\platformBold.xnb
-Content\Player.xnb
-Content\FoodSpriteSheet.xnb
 Content\Door.xnb
-Content\platformA.xnb
-Content\platformB.xnb
-Content\platformC.xnb
-Content\wall.xnb
+Content\FoodSpriteSheet.xnb
+Content\gradient.xnb
 Content\Intro\BoxOfElephants.xnb
 Content\Intro\GDD2007_Transparent.xnb
 Content\Intro\WarningLogo.xnb
-Content\backgroundFinal.xnb
+Content\platformA.xnb
+Content\platformB.xnb
+Content\platformC.xnb
+Content\Player.xnb
 Content\scale.xnb
+Content\wall.xnb
+Content\gamefont.xnb
+Content\menufont.xnb
 Content\Audio\Chubz Audio.xgs
 Content\Audio\Wave Bank.xwb
 Content\Audio\Sound Bank.xsb
